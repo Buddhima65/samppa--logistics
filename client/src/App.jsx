@@ -1,18 +1,23 @@
 import { useState } from 'react'
 import './App.css'
 import sampaaLogo from './assets/images/slogo.jpg'
+import logisticsImage from './assets/images/transport.jpg'
+import propertyImage from './assets/images/property.jpg'  // Import property image
+import greenCocoImage from './assets/images/green.jpg'
 
 const copy = {
   en: {
     languageLabel: 'Language',
     nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Green Coco Finland', 'Company', 'Contact'],
     quoteButton: 'Request a Quote',
+    heroEyebrow: 'Helsinki-Based Route Network',
     heroTitle: 'Fair Service All The Way To Your Destination',
     heroText:
       'Sampaa Logistics offers reliable transport and property services with sustainable products for modern homes and businesses.',
     heroPrimary: 'Request a Quote',
     heroSecondary: 'Contact Us',
-    cardCta: 'Explore Services',
+    manifestLabel: 'On This Route',
+    cardCta: 'Explore Service',
     cards: [
       {
         id: 'logistics',
@@ -20,6 +25,9 @@ const copy = {
         text: 'Reliable transport and logistics services for businesses and private customers.',
         points: ['Deliveries', 'International', 'Logistics', 'On Time'],
         theme: 'blue',
+        icon: 'truck',
+        image: logisticsImage, // Add image
+        imageAlt: 'Sampaa Logistics transport services'
       },
       {
         id: 'property',
@@ -27,6 +35,9 @@ const copy = {
         text: 'Versatile property services all year round for maintenance and upkeep.',
         points: ['Snow Work', 'Yard Care', 'Maintenance', 'Cleaning'],
         theme: 'green',
+        icon: 'house',
+        image: propertyImage,
+        imageAlt: 'Sampaa Logistics property services'
       },
       {
         id: 'green-coco',
@@ -34,6 +45,9 @@ const copy = {
         text: 'Natural and sustainable products for better homes and daily life.',
         points: ['Eco', 'Natural', 'Sustainable', 'Future Ready'],
         theme: 'eco',
+        icon: 'leaf',
+        image: greenCocoImage,  // Add this
+        imageAlt: 'Green Coco Finland sustainable products'
       },
     ],
     trust: [
@@ -57,12 +71,14 @@ const copy = {
     languageLabel: 'Kieli',
     nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Green Coco Finland', 'Yritys', 'Yhteystiedot'],
     quoteButton: 'Pyydä Tarjous',
+    heroEyebrow: 'Helsinki-pohjainen palveluverkosto',
     heroTitle: 'Reilua Palvelua Perille Saakka',
     heroText:
       'Sampaa Logistics tarjoaa luotettavaa kuljetus- ja kiinteistöpalvelua sekä vastuullisia tuotteita huomisen tarpeisiin.',
     heroPrimary: 'Pyydä Tarjous',
     heroSecondary: 'Ota Yhteyttä',
-    cardCta: 'Tutustu Palveluihin',
+    manifestLabel: 'Tällä Reitillä',
+    cardCta: 'Tutustu Palveluun',
     cards: [
       {
         id: 'logistics',
@@ -70,6 +86,9 @@ const copy = {
         text: 'Luotettavat kuljetus- ja logistiikkaratkaisut yrityksille ja yksityisille.',
         points: ['Kuljetukset', 'Kansainväliset', 'Logistiikka', 'Täsmällisesti'],
         theme: 'blue',
+        icon: 'truck',
+         image: logisticsImage, // Add image
+        imageAlt: 'Sampaa Logistics transport services'
       },
       {
         id: 'property',
@@ -77,6 +96,9 @@ const copy = {
         text: 'Monipuoliset kiinteistöpalvelut ympäri vuoden ulkoalueista sisätiloihin.',
         points: ['Lumityöt', 'Pihapalvelut', 'Kiinteistöhuolto', 'Siivous'],
         theme: 'green',
+        icon: 'house',
+         image: propertyImage,
+        imageAlt: 'Sampaa Logistics property services'
       },
       {
         id: 'green-coco',
@@ -84,6 +106,9 @@ const copy = {
         text: 'Ekologisia ja kestäviä tuotteita paremman huomisen rakentamiseen.',
         points: ['Eco', 'Natural', 'Sustainable', 'Better Tomorrow'],
         theme: 'eco',
+        icon: 'leaf',
+         image: greenCocoImage,
+        imageAlt: 'Green Coco Finland sustainable products'
       },
     ],
     trust: [
@@ -103,6 +128,42 @@ const copy = {
     },
     copyright: 'Copyright 2026 Sampaa Logistics. Kaikki oikeudet pidätetään.',
   },
+}
+
+/* Small hand-drawn icon set so every card badge renders identically,
+   regardless of language or content length. */
+function ServiceIcon({ name }) {
+  switch (name) {
+    case 'truck':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+          <path d="M2 6.5h11v9H2z" strokeLinejoin="round" />
+          <path d="M13 10h4.2L20 12.7v2.8h-7z" strokeLinejoin="round" />
+          <circle cx="6" cy="17.2" r="1.7" />
+          <circle cx="16.5" cy="17.2" r="1.7" />
+        </svg>
+      )
+    case 'house':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+          <path d="M3.5 11.5 12 4l8.5 7.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M5.5 10v9h13v-9" strokeLinejoin="round" />
+          <path d="M10 19v-5h4v5" strokeLinejoin="round" />
+        </svg>
+      )
+    case 'leaf':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+          <path
+            d="M20 4c.6 7-2.4 12.4-8 14.4C6 20 3.5 17 4.6 12 5.8 6.6 12 4 20 4Z"
+            strokeLinejoin="round"
+          />
+          <path d="M19 5 8.5 15.5" strokeLinecap="round" />
+        </svg>
+      )
+    default:
+      return null
+  }
 }
 
 function App() {
@@ -153,85 +214,98 @@ function App() {
       </header>
 
       <main>
-        <section className="hero shell" id="home">
-          <div className="hero__copy">
-            <h1>{text.heroTitle}</h1>
-            <p className="hero__text">{text.heroText}</p>
+      <section className="hero shell" id="home">
+  {/* Video Background */}
+  <div className="hero__video-wrapper">
+    <video 
+      className="hero__video" 
+      autoPlay 
+      muted 
+      loop 
+      playsInline
+      poster="/src/assets/videos/hero-poster.jpg"
+    >
+      <source src="/src/assets/videos/herov.mp4" type="video/mp4" />
+      {/* Add fallback image if video doesn't load */}
+    </video>
+    <div className="hero__overlay"></div>
+  </div>
 
-            <div className="hero__actions">
-              <a className="button button--primary" href="#services">
-                {text.heroPrimary}
-              </a>
-              <a className="button button--ghost" href="#contact">
-                {text.heroSecondary}
-              </a>
-            </div>
-          </div>
+  {/* Content overlay on top of video */}
+  <div className="hero__content">
+    <div className="hero__copy">
+      <p className="hero__eyebrow">{text.heroEyebrow}</p>
+      <h1>{text.heroTitle}</h1>
+      <p className="hero__text">{text.heroText}</p>
 
-          <aside className="hero__visual" aria-label="Sampaa Logistics vehicle banner">
-            <div className="hero__van-scene">
-              <div className="hero__sun" />
-              <div className="hero__van-card">
-                <img src={sampaaLogo} alt="Sampaa Logistics" className="hero__van-logo" />
-                <span className="wheel wheel--left" />
-                <span className="wheel wheel--right" />
-              </div>
-            </div>
-          </aside>
-        </section>
-<section className="section shell" id="services">
-  <div className="service-grid">
-    {text.cards.map((card, index) => (
-      <article
-        key={card.title}
-        className={`service-card service-card--${card.theme}`}
-        id={card.id}
-      >
-        <div className={`service-card__banner service-card__banner--${card.theme}`}>
-          {index === 0 && (
-            <img src={sampaaLogo} alt="Sampaa Logistics" />
-          )}
+      <div className="hero__actions">
+        <a className="button button--primary" href="#services">
+          {text.heroPrimary}
+        </a>
+        <a className="button button--ghost" href="#contact">
+          {text.heroSecondary}
+        </a>
+      </div>
+    </div>
 
-          {index === 1 && (
-            <div className="service-brand service-brand--property">
-              <strong>SAMPAA</strong>
-              <span>
-                {language === 'en'
-                  ? 'PROPERTY SERVICES'
-                  : 'KIINTEISTOPALVELUT'}
-              </span>
-            </div>
-          )}
-
-          {index === 2 && (
-            <div className="service-brand service-brand--eco">
-              <strong>GREEN COCO</strong>
-              <span>FINLAND</span>
-            </div>
-          )}
-        </div>
-
-        <div className="service-card__body">
-          <h2>{card.title}</h2>
-          <p>{card.text}</p>
-
-          <ul>
-            {card.points.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ul>
-
-          <a href="#contact">{text.cardCta}</a>
-        </div>
-      </article>
-    ))}
+    
   </div>
 </section>
+
+        <section className="section shell" id="services">
+          <div className="route-track" aria-hidden="true">
+            <span className="route-track__line" />
+            <span className="route-track__dot" />
+            <span className="route-track__dot" />
+            <span className="route-track__dot" />
+          </div>
+
+          <div className="service-grid">
+            {text.cards.map((card, index) => (
+              <article
+                key={card.title}
+                className={`service-card service-card--${card.theme}`}
+                id={card.id}
+              >
+                <div className="service-card__image-wrapper">
+          <img 
+            src={card.image} 
+            alt={card.imageAlt} 
+            className="service-card__image"
+            loading="lazy"
+          />
+          <div className={`service-card__image-overlay service-card__image-overlay--${card.theme}`}>
+            <span className={`service-card__badge service-card__badge--${card.theme}`}>
+              <ServiceIcon name={card.icon} />
+            </span>
+            <span className="service-card__index">{String(index + 1).padStart(2, '0')}</span>
+          </div>
+        </div>
+
+                <div className="service-card__body">
+                  <h2>{card.title}</h2>
+                  <p>{card.text}</p>
+
+                  <ul>
+                    {card.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+
+                  <a href="#contact" className="service-card__cta">
+                    {text.cardCta}
+                    <span aria-hidden="true">&rarr;</span>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
         <section className="trust shell" id="company">
           {text.trust.map((item) => (
             <article key={item.title} className="trust-item">
-              <span className="trust-item__icon" />
+              <span className="trust-item__icon" aria-hidden="true" />
               <div>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
