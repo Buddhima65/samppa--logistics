@@ -1,0 +1,675 @@
+
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import './PropertyPage.css';
+import sampaaLogo from '../assets/images/slogo.jpg';
+import propertyHero from '../assets/images/property.jpg';
+
+const content = {
+  en: {
+    // Navigation
+    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Green Coco Finland', 'Company', 'Contact'],
+    quoteButton: 'Request a Quote',
+    
+    // Brand
+    brandName: 'Samppa Property & Cleaning Services',
+    
+    // Page content
+    pageTitle: 'SAMPPA PROPERTY & CLEANING SERVICES',
+    
+    // Hero
+    heroTitle: 'All property services from one place',
+    heroSubtitle: 'Cleaning • Window Washing • Property Maintenance • Outdoor Areas • Snow Removal',
+    heroText: 'Reliable and flexible service for businesses, housing companies, and properties.',
+    heroPrimary: 'Request a Quote',
+    heroSecondary: 'Explore Services',
+    
+    // Services Section
+    servicesTitle: 'Our Services',
+    
+    cleaning: {
+      title: 'Cleaning Services',
+      text: 'We keep business premises, facilities, and properties clean and pleasant.',
+      items: ['Corporate Cleaning', 'Facility Cleaning', 'Stairwell Cleaning', 'One-time Cleaning', 'Maintenance Cleaning', 'Basic Cleaning'],
+      cta: 'Explore Cleaning Services →'
+    },
+    
+    windowWashing: {
+      title: 'Window Washing',
+      text: 'Clean windows complete the appearance of your property.',
+      items: ['Corporate Window Washing', 'Retail Window Washing', 'Housing Company Window Washing', 'One-time Window Washing'],
+      cta: 'Request a Quote →'
+    },
+    
+    propertyMaintenance: {
+      title: 'Property Maintenance',
+      text: 'We take care of daily property upkeep and agreed maintenance work.',
+      items: ['General Property Maintenance', 'Small Repair Work', 'Waste Area Management', 'Inspections and Minor Repairs', 'Other Agreed Maintenance'],
+      cta: 'Explore Maintenance →'
+    },
+    
+    outdoorAreas: {
+      title: 'Outdoor & Yard Area Maintenance',
+      text: 'We keep yard areas clean and in good condition year-round.',
+      items: ['Lawn Mowing', 'Yard Area Tidy-up', 'Leaf Removal', 'Waste Removal', 'Shrub and Planting Area Care', 'Outdoor Area Maintenance'],
+      cta: 'Explore Outdoor Services →'
+    },
+    
+    winterServices: {
+      title: 'Winter Services',
+      text: 'We ensure safe walkways even in winter.',
+      items: ['Snow Removal', 'Snow Clearing', 'Plowing', 'Sanding', 'Ice Prevention', 'Snow Removal Transport (on request)'],
+      cta: 'Explore Winter Services →'
+    },
+    
+    // Why Choose Us
+    whyChoose: {
+      title: 'Why Samppa?',
+      items: [
+        {
+          icon: '🤝',
+          title: 'One Partner – Multiple Services',
+          text: 'Cleaning, window washing, property maintenance, and yard care can all be ordered from the same service provider.'
+        },
+        {
+          icon: '🔄',
+          title: 'Flexible Service',
+          text: 'We tailor services according to customer needs – one-time or regularly.'
+        },
+        {
+          icon: '✅',
+          title: 'Reliable Execution',
+          text: 'We keep our promises and do the work carefully.'
+        },
+        {
+          icon: '🏢',
+          title: 'Service for Businesses and Properties',
+          text: 'We serve businesses, retail spaces, housing companies, and other property owners.'
+        }
+      ]
+    },
+    
+    // For Businesses
+    business: {
+      title: 'For Businesses',
+      subtitle: 'Get your business premises in order without extra hassle',
+      text: 'We offer comprehensive services for business premises cleaning, window washing, property maintenance, and outdoor area care. You can order a single service or build an ongoing service package.',
+      examples: [
+        'Monthly window washing?',
+        'Regular facility cleaning?',
+        'Lawn mowing?',
+        'Winter snow removal?',
+        'Small property maintenance jobs?'
+      ],
+      cta: 'Request a Business Quote'
+    },
+    
+    // For Properties
+    property: {
+      title: 'For Properties',
+      subtitle: 'Property maintenance from one partner',
+      text: 'We take care of property cleanliness, outdoor areas, and agreed maintenance work year-round. The service package can be designed for housing companies, commercial properties, or other properties.',
+      services: ['Cleaning', 'Window Washing', 'Property Maintenance', 'Yard Work', 'Snow Removal'],
+      cta: 'Request a Quote'
+    },
+    
+    // How It Works
+    howItWorks: {
+      title: 'How Our Service Works',
+      steps: [
+        {
+          number: '1',
+          title: 'Contact Us',
+          text: 'Tell us about your property and the services you need.'
+        },
+        {
+          number: '2',
+          title: 'Agree on Needs',
+          text: 'We\'ll go through what needs to be done and how often.'
+        },
+        {
+          number: '3',
+          title: 'Get a Quote',
+          text: 'You\'ll receive a clear quote for the agreed services.'
+        },
+        {
+          number: '4',
+          title: 'We Start Working',
+          text: 'We agree on a start date and take care of your property.'
+        }
+      ]
+    },
+    
+    // Contact Form
+    contact: {
+      title: 'Request a Quote',
+      subtitle: 'Tell us what you need.',
+      name: 'Name *',
+      company: 'Company',
+      phone: 'Phone Number *',
+      email: 'Email *',
+      address: 'Property Address',
+      services: 'What services do you need?',
+      servicesList: ['Cleaning', 'Window Washing', 'Property Maintenance', 'Lawn & Yard Care', 'Snow Removal & Sanding', 'Other Service'],
+      additionalInfo: 'Additional Information:',
+      submit: 'Send Quote Request',
+      phoneLabel: 'Phone',
+      emailLabel: 'Email',
+      locationLabel: 'Location'
+    },
+    
+    // About Us
+    about: {
+      title: 'About Us',
+      subtitle: 'Samppa Property & Cleaning Services',
+      text1: 'We are a company focused on property, business, and outdoor area services.',
+      text2: 'Our goal is to provide our customers with reliable, flexible, and high-quality service from one place.',
+      text3: 'Our services can be implemented one-time or regularly according to customer needs.',
+      tagline: 'Clean results. Careful service.'
+    },
+    
+    // Footer
+    footer: {
+      copyright: '© 2026 Samppa Property & Cleaning Services',
+      privacy: 'Privacy Policy',
+      cookies: 'Cookie Settings'
+    }
+  },
+  
+  fi: {
+    // Navigation
+    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Green Coco Finland', 'Yritys', 'Yhteystiedot'],
+    quoteButton: 'Pyydä Tarjous',
+    
+    // Brand
+    brandName: 'Samppa Kiinteistö- ja Siivouspalvelut',
+    
+    // Page content
+    pageTitle: 'SAMPPA KIINTEISTÖ- JA SIIVOUSPALVELUT',
+    
+    // Hero
+    heroTitle: 'Kaikki kiinteistön palvelut yhdestä paikasta',
+    heroSubtitle: 'Siivous • Ikkunoiden pesu • Kiinteistöhuolto • Piha-alueet • Lumityöt',
+    heroText: 'Luotettavaa ja joustavaa palvelua yrityksille, taloyhtiöille ja kiinteistöille.',
+    heroPrimary: 'Pyydä Tarjous',
+    heroSecondary: 'Tutustu Palveluihin',
+    
+    // Services Section
+    servicesTitle: 'Palvelumme',
+    
+    cleaning: {
+      title: 'Siivouspalvelut',
+      text: 'Pidämme yritysten, toimitilojen ja kiinteistöjen tilat siisteinä ja viihtyisinä.',
+      items: ['Yrityssiivous', 'Toimitilojen siivous', 'Porrassiivous', 'Kertasiivous', 'Ylläpitosiivous', 'Perussiivous'],
+      cta: 'Tutustu siivouspalveluihin →'
+    },
+    
+    windowWashing: {
+      title: 'Ikkunoiden pesu',
+      text: 'Puhtaat ikkunat viimeistelevät kiinteistön ilmeen.',
+      items: ['Yritysten ikkunanpesu', 'Liiketilojen ikkunanpesu', 'Taloyhtiöiden ikkunanpesu', 'Kertaluonteiset ikkunanpesut'],
+      cta: 'Pyydä tarjous →'
+    },
+    
+    propertyMaintenance: {
+      title: 'Kiinteistöhuolto',
+      text: 'Huolehdimme kiinteistön päivittäisestä ylläpidosta ja sovittavista huoltotöistä.',
+      items: ['Kiinteistön yleinen ylläpito', 'Pienet huoltotyöt', 'Jätealueiden hoito', 'Tarkastukset ja pienet korjaukset', 'Muut sovittavat huoltopalvelut'],
+      cta: 'Tutustu kiinteistöhuoltoon →'
+    },
+    
+    outdoorAreas: {
+      title: 'Piha- ja ulkoalueiden hoito',
+      text: 'Pidämme piha-alueet siisteinä ja hyvässä kunnossa ympäri vuoden.',
+      items: ['Nurmikon leikkaus', 'Piha-alueiden siistiminen', 'Lehtien poisto', 'Roskien poisto', 'Pensaiden ja istutusalueiden hoito', 'Ulkoalueiden ylläpito'],
+      cta: 'Tutustu pihapalveluihin →'
+    },
+    
+    winterServices: {
+      title: 'Talvikauden palvelut',
+      text: 'Huolehdimme kulkureittien turvallisuudesta myös talvella.',
+      items: ['Lumityöt', 'Lumenluonti', 'Auraus', 'Hiekoitus', 'Liukkaudentorjunta', 'Lumien poiskuljetus sovittaessa'],
+      cta: 'Tutustu talvipalveluihin →'
+    },
+    
+    // Why Choose Us
+    whyChoose: {
+      title: 'Miksi Samppa?',
+      items: [
+        {
+          icon: '🤝',
+          title: 'Yksi kumppani – useampi palvelu',
+          text: 'Siivouksen, ikkunanpesun, kiinteistöhuollon ja piha-alueiden hoidon voi tilata samalta palveluntarjoajalta.'
+        },
+        {
+          icon: '🔄',
+          title: 'Joustava palvelu',
+          text: 'Sovimme palvelun asiakkaan tarpeen mukaan – kertaluonteisesti tai säännöllisesti.'
+        },
+        {
+          icon: '✅',
+          title: 'Luotettava tekeminen',
+          text: 'Pidämme sovituista asioista kiinni ja hoidamme työt huolellisesti.'
+        },
+        {
+          icon: '🏢',
+          title: 'Palvelua yrityksille ja kiinteistöille',
+          text: 'Palvelemme yrityksiä, liiketiloja, taloyhtiöitä ja muita kiinteistönomistajia.'
+        }
+      ]
+    },
+    
+    // For Businesses
+    business: {
+      title: 'Yrityksille',
+      subtitle: 'Yrityksesi tilat kuntoon ilman turhaa vaivaa',
+      text: 'Tarjoamme yrityksille kokonaisvaltaisia palveluja toimitilojen siivoukseen, ikkunanpesuun, kiinteistöhuoltoon ja ulkoalueiden hoitoon. Voit tilata yksittäisen palvelun tai rakentaa jatkuvan palvelukokonaisuuden.',
+      examples: [
+        'Kerran kuukaudessa tehtävää ikkunanpesua?',
+        'Säännöllistä toimitilojen siivousta?',
+        'Nurmikonleikkuuta?',
+        'Talvikauden lumitöitä?',
+        'Pieniä kiinteistöhuollon töitä?'
+      ],
+      cta: 'Pyydä Yritystarjous'
+    },
+    
+    // For Properties
+    property: {
+      title: 'Kiinteistöille',
+      subtitle: 'Kiinteistön ylläpito yhdeltä kumppanilta',
+      text: 'Pidämme huolta kiinteistön siisteydestä, piha-alueista ja sovittavista huoltotöistä ympäri vuoden. Palvelukokonaisuus voidaan suunnitella esimerkiksi taloyhtiölle, liikekiinteistölle tai muulle kiinteistölle.',
+      services: ['Siivous', 'Ikkunoiden pesu', 'Kiinteistöhuolto', 'Pihatyöt', 'Lumityöt'],
+      cta: 'Pyydä Tarjous'
+    },
+    
+    // How It Works
+    howItWorks: {
+      title: 'Näin palvelu toimii',
+      steps: [
+        {
+          number: '1',
+          title: 'Ota yhteyttä',
+          text: 'Kerro meille kiinteistöstäsi ja tarvitsemistasi palveluista.'
+        },
+        {
+          number: '2',
+          title: 'Sovitaan tarpeet',
+          text: 'Käymme läpi, mitä tehdään ja kuinka usein.'
+        },
+        {
+          number: '3',
+          title: 'Saat tarjouksen',
+          text: 'Saat selkeän tarjouksen sovituista palveluista.'
+        },
+        {
+          number: '4',
+          title: 'Aloitamme työt',
+          text: 'Sovitaan aloitus ja pidämme kiinteistöstäsi huolta.'
+        }
+      ]
+    },
+    
+    // Contact Form
+    contact: {
+      title: 'Tarjouspyyntö',
+      subtitle: 'Pyydä tarjous',
+      subtext: 'Kerro meille, mitä tarvitset.',
+      name: 'Nimi *',
+      company: 'Yritys',
+      phone: 'Puhelinnumero *',
+      email: 'Sähköposti *',
+      address: 'Kohteen osoite',
+      services: 'Mitä palvelua tarvitset?',
+      servicesList: ['Siivous', 'Ikkunoiden pesu', 'Kiinteistöhuolto', 'Nurmikon ja piha-alueiden hoito', 'Lumityöt ja hiekoitus', 'Muu palvelu'],
+      additionalInfo: 'Lisätietoja:',
+      submit: 'Lähetä Tarjouspyyntö',
+      phoneLabel: 'Puhelin',
+      emailLabel: 'Sähköposti',
+      locationLabel: 'Toimialue'
+    },
+    
+    // About Us
+    about: {
+      title: 'Meistä',
+      subtitle: 'Samppa Kiinteistö- ja Siivouspalvelut',
+      text1: 'Olemme kiinteistöjen, yritysten ja ulkoalueiden palveluihin keskittyvä yritys.',
+      text2: 'Tavoitteemme on tarjota asiakkaillemme luotettavaa, joustavaa ja laadukasta palvelua yhdestä paikasta.',
+      text3: 'Palvelumme voidaan toteuttaa kertaluonteisesti tai säännöllisesti asiakkaan tarpeen mukaan.',
+      tagline: 'Siistiä jälkeä. Huolellista palvelua.'
+    },
+    
+    // Footer
+    footer: {
+      copyright: '© 2026 Samppa Kiinteistö- ja Siivouspalvelut',
+      privacy: 'Tietosuojaseloste',
+      cookies: 'Evästeasetukset'
+    }
+  }
+};
+
+function PropertyPage({ language, setLanguage }) {
+  const text = content[language];
+  const navTargets = ['/', '/logistics', '/property', '/green-coco', '/#company', '/#contact'];
+
+  return (
+    <div className="property-page">
+      {/* ===== HEADER / NAVBAR ===== */}
+      <header className="topbar shell">
+        <Link className="brand" to="/" aria-label="Samppa Property Services home">
+          <span className="brand__mark" aria-hidden="true">
+            <img src={sampaaLogo} alt="" className="brand__logo" />
+          </span>
+        </Link>
+
+        <nav className="nav" aria-label="Primary">
+          {text.nav.map((item, index) => {
+            const target = navTargets[index];
+            return target.startsWith('#') ? (
+              <a key={item} href={target}>{item}</a>
+            ) : (
+              <Link key={item} to={target}>{item}</Link>
+            );
+          })}
+        </nav>
+
+        <div className="header-actions">
+          <div className="language-switch" role="group" aria-label={language === 'en' ? 'Language' : 'Kieli'}>
+            <button
+              type="button"
+              className={language === 'en' ? 'is-active' : ''}
+              onClick={() => setLanguage('en')}
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              className={language === 'fi' ? 'is-active' : ''}
+              onClick={() => setLanguage('fi')}
+            >
+              FI
+            </button>
+          </div>
+          <a href="#contact" className="quote-btn">
+            {text.quoteButton}
+          </a>
+        </div>
+      </header>
+
+      {/* ===== MAIN CONTENT ===== */}
+      <main className="property-main">
+        {/* Page Title */}
+        <div className="property-page-title shell">
+          <h1 className="page-title">{text.pageTitle}</h1>
+        </div>
+
+        {/* Hero Section */}
+        <section className="property-hero shell">
+          <div className="property-hero__image">
+            <img src={propertyHero} alt={language === 'en' ? 'Property services' : 'Kiinteistöpalvelut'} />
+          </div>
+          <div className="property-hero__content">
+            <h1>{text.heroTitle}</h1>
+            <p className="property-hero__subtitle">{text.heroSubtitle}</p>
+            <p className="property-hero__text">{text.heroText}</p>
+            <div className="property-hero__actions">
+              <a href="#contact" className="button button--primary">
+                {text.heroPrimary}
+              </a>
+              <a href="#services" className="button button--ghost">
+                {text.heroSecondary}
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section className="property-services-section shell" id="services">
+          <h2 className="section-title">{text.servicesTitle}</h2>
+          
+          {/* Cleaning Services */}
+          <div className="service-category">
+            <h3 className="service-category-title">{text.cleaning.title}</h3>
+            <p className="service-category-text">{text.cleaning.text}</p>
+            <ul className="service-items">
+              {text.cleaning.items.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+            <a href="#contact" className="service-cta-link">{text.cleaning.cta}</a>
+          </div>
+
+          {/* Window Washing */}
+          <div className="service-category">
+            <h3 className="service-category-title">{text.windowWashing.title}</h3>
+            <p className="service-category-text">{text.windowWashing.text}</p>
+            <ul className="service-items">
+              {text.windowWashing.items.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+            <a href="#contact" className="service-cta-link">{text.windowWashing.cta}</a>
+          </div>
+
+          {/* Property Maintenance */}
+          <div className="service-category">
+            <h3 className="service-category-title">{text.propertyMaintenance.title}</h3>
+            <p className="service-category-text">{text.propertyMaintenance.text}</p>
+            <ul className="service-items">
+              {text.propertyMaintenance.items.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+            <a href="#contact" className="service-cta-link">{text.propertyMaintenance.cta}</a>
+          </div>
+
+          {/* Outdoor Areas */}
+          <div className="service-category">
+            <h3 className="service-category-title">{text.outdoorAreas.title}</h3>
+            <p className="service-category-text">{text.outdoorAreas.text}</p>
+            <ul className="service-items">
+              {text.outdoorAreas.items.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+            <a href="#contact" className="service-cta-link">{text.outdoorAreas.cta}</a>
+          </div>
+
+          {/* Winter Services */}
+          <div className="service-category">
+            <h3 className="service-category-title">{text.winterServices.title}</h3>
+            <p className="service-category-text">{text.winterServices.text}</p>
+            <ul className="service-items">
+              {text.winterServices.items.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+            <a href="#contact" className="service-cta-link">{text.winterServices.cta}</a>
+          </div>
+        </section>
+
+        {/* Why Choose Us */}
+        <section className="property-why-choose shell">
+          <h2 className="section-title">{text.whyChoose.title}</h2>
+          <div className="why-choose-grid">
+            {text.whyChoose.items.map((item, index) => (
+              <div key={index} className="why-choose-item">
+                <div className="why-choose-icon">{item.icon}</div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* For Businesses */}
+        <section className="property-business shell">
+          <div className="business-box">
+            <h2>{text.business.title}</h2>
+            <h3>{text.business.subtitle}</h3>
+            <p>{text.business.text}</p>
+            <ul className="business-examples">
+              {text.business.examples.map((example, index) => (
+                <li key={index}>{example}</li>
+              ))}
+            </ul>
+            <div className="business-cta-row">
+              <a href="#contact" className="button button--primary button--large">
+                {text.business.cta}
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* For Properties */}
+        <section className="property-properties shell">
+          <div className="properties-box">
+            <h2>{text.property.title}</h2>
+            <h3>{text.property.subtitle}</h3>
+            <p>{text.property.text}</p>
+            <div className="property-services-tags">
+              {text.property.services.map((service, index) => (
+                <span key={index} className="service-tag">{service}</span>
+              ))}
+            </div>
+            <a href="#contact" className="button button--primary button--large">
+              {text.property.cta}
+            </a>
+          </div>
+        </section>
+
+        {/* How It Works */}
+        <section className="property-how-it-works shell">
+          <h2 className="section-title">{text.howItWorks.title}</h2>
+          <div className="steps-grid">
+            {text.howItWorks.steps.map((step, index) => (
+              <div key={index} className="step-item">
+                <div className="step-number">{step.number}</div>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Contact / Quote Request Section */}
+        <section className="property-contact-section shell" id="contact">
+          <div className="contact-form-container">
+            <h2>{text.contact.title}</h2>
+            <p className="contact-subtitle">{text.contact.subtitle}</p>
+            <p className="contact-subtext">{text.contact.subtext}</p>
+            
+            <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+              <div className="form-group">
+                <label>{text.contact.name}</label>
+                <input type="text" required />
+              </div>
+              
+              <div className="form-group">
+                <label>{text.contact.company}</label>
+                <input type="text" />
+              </div>
+              
+              <div className="form-group">
+                <label>{text.contact.phone}</label>
+                <input type="tel" required />
+              </div>
+              
+              <div className="form-group">
+                <label>{text.contact.email}</label>
+                <input type="email" required />
+              </div>
+              
+              <div className="form-group">
+                <label>{text.contact.address}</label>
+                <input type="text" />
+              </div>
+              
+              <div className="form-group">
+                <label>{text.contact.services}</label>
+                <div className="checkbox-group">
+                  {text.contact.servicesList.map((service, index) => (
+                    <label key={index} className="checkbox-label">
+                      <input type="checkbox" /> {service}
+                    </label>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="form-group">
+                <label>{text.contact.additionalInfo}</label>
+                <textarea rows="4"></textarea>
+              </div>
+              
+              <button type="submit" className="button button--primary button--large submit-btn">
+                {text.contact.submit}
+              </button>
+            </form>
+            
+            <div className="contact-info-row">
+              <div className="contact-info-item">
+                <span className="contact-info-icon">📞</span>
+                <div>
+                  <strong>{text.contact.phoneLabel}</strong>
+                  <p>040 123 4567</p>
+                </div>
+              </div>
+              <div className="contact-info-item">
+                <span className="contact-info-icon">✉️</span>
+                <div>
+                  <strong>{text.contact.emailLabel}</strong>
+                  <p>info@samppalogistics.fi</p>
+                </div>
+              </div>
+              <div className="contact-info-item">
+                <span className="contact-info-icon">📍</span>
+                <div>
+                  <strong>{text.contact.locationLabel}</strong>
+                  <p>{language === 'en' ? 'Helsinki, Finland' : 'Helsinki, Suomi'}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* About Us */}
+        <section className="property-about shell">
+          <div className="about-box">
+            <h2>{text.about.title}</h2>
+            <h3>{text.about.subtitle}</h3>
+            <p>{text.about.text1}</p>
+            <p>{text.about.text2}</p>
+            <p>{text.about.text3}</p>
+            <p className="about-tagline">{text.about.tagline}</p>
+          </div>
+        </section>
+      </main>
+
+      {/* ===== FOOTER ===== */}
+      <footer className="property-footer">
+        <div className="shell property-footer__top">
+          <div className="footer-brand">
+            <h3>{text.brandName}</h3>
+            <p>{language === 'en' ? 'Cleaning • Window Washing • Property Maintenance • Outdoor Areas • Snow Removal' : 'Siivous • Ikkunoiden pesu • Kiinteistöhuolto • Piha-alueet • Lumityöt'}</p>
+          </div>
+          <div className="footer-nav">
+            <a href="/">{text.nav[0]}</a>
+            <a href="#services">{text.nav[1]}</a>
+            <a href="#business">{language === 'en' ? 'For Businesses' : 'Yrityksille'}</a>
+            <a href="#about">{text.nav[4]}</a>
+            <a href="#contact">{text.nav[5]}</a>
+          </div>
+        </div>
+        <div className="shell property-footer__bottom">
+          <p>{text.footer.copyright}</p>
+          <div className="footer-links">
+            <a href="#home">{text.footer.privacy}</a>
+            <a href="#home">{text.footer.cookies}</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export default PropertyPage;

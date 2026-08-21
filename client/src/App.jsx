@@ -1,9 +1,12 @@
-import { useState } from 'react'
-import './App.css'
-import sampaaLogo from './assets/images/slogo.jpg'
-import logisticsImage from './assets/images/transport.jpg'
-import propertyImage from './assets/images/property.jpg'  // Import property image
-import greenCocoImage from './assets/images/green.jpg'
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import './App.css';
+import LogisticsPage from './pages/LogisticsPage';
+import PropertyPage from './pages/PropertyPage';
+import sampaaLogo from './assets/images/slogo.jpg';
+import logisticsImage from './assets/images/transport.jpg';
+import propertyImage from './assets/images/property.jpg';
+import greenCocoImage from './assets/images/green.jpg';
 
 const copy = {
   en: {
@@ -26,8 +29,9 @@ const copy = {
         points: ['Deliveries', 'International', 'Logistics', 'On Time'],
         theme: 'blue',
         icon: 'truck',
-        image: logisticsImage, // Add image
-        imageAlt: 'Sampaa Logistics transport services'
+        image: logisticsImage,
+        imageAlt: 'Sampaa Logistics transport services',
+        link: '/logistics'
       },
       {
         id: 'property',
@@ -37,7 +41,8 @@ const copy = {
         theme: 'green',
         icon: 'house',
         image: propertyImage,
-        imageAlt: 'Sampaa Logistics property services'
+        imageAlt: 'Sampaa Logistics property services',
+        link: '/property'
       },
       {
         id: 'green-coco',
@@ -46,8 +51,9 @@ const copy = {
         points: ['Eco', 'Natural', 'Sustainable', 'Future Ready'],
         theme: 'eco',
         icon: 'leaf',
-        image: greenCocoImage,  // Add this
-        imageAlt: 'Green Coco Finland sustainable products'
+        image: greenCocoImage,
+        imageAlt: 'Green Coco Finland sustainable products',
+        link: '/green-coco'
       },
     ],
     trust: [
@@ -87,8 +93,9 @@ const copy = {
         points: ['Kuljetukset', 'Kansainväliset', 'Logistiikka', 'Täsmällisesti'],
         theme: 'blue',
         icon: 'truck',
-         image: logisticsImage, // Add image
-        imageAlt: 'Sampaa Logistics transport services'
+        image: logisticsImage,
+        imageAlt: 'Sampaa Logistics transport services',
+        link: '/logistics'
       },
       {
         id: 'property',
@@ -97,8 +104,9 @@ const copy = {
         points: ['Lumityöt', 'Pihapalvelut', 'Kiinteistöhuolto', 'Siivous'],
         theme: 'green',
         icon: 'house',
-         image: propertyImage,
-        imageAlt: 'Sampaa Logistics property services'
+        image: propertyImage,
+        imageAlt: 'Sampaa Logistics property services',
+        link: '/property'
       },
       {
         id: 'green-coco',
@@ -107,8 +115,9 @@ const copy = {
         points: ['Eco', 'Natural', 'Sustainable', 'Better Tomorrow'],
         theme: 'eco',
         icon: 'leaf',
-         image: greenCocoImage,
-        imageAlt: 'Green Coco Finland sustainable products'
+        image: greenCocoImage,
+        imageAlt: 'Green Coco Finland sustainable products',
+        link: '/green-coco'
       },
     ],
     trust: [
@@ -128,10 +137,8 @@ const copy = {
     },
     copyright: 'Copyright 2026 Sampaa Logistics. Kaikki oikeudet pidätetään.',
   },
-}
+};
 
-/* Small hand-drawn icon set so every card badge renders identically,
-   regardless of language or content length. */
 function ServiceIcon({ name }) {
   switch (name) {
     case 'truck':
@@ -142,7 +149,7 @@ function ServiceIcon({ name }) {
           <circle cx="6" cy="17.2" r="1.7" />
           <circle cx="16.5" cy="17.2" r="1.7" />
         </svg>
-      )
+      );
     case 'house':
       return (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
@@ -150,7 +157,7 @@ function ServiceIcon({ name }) {
           <path d="M5.5 10v9h13v-9" strokeLinejoin="round" />
           <path d="M10 19v-5h4v5" strokeLinejoin="round" />
         </svg>
-      )
+      );
     case 'leaf':
       return (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
@@ -160,34 +167,35 @@ function ServiceIcon({ name }) {
           />
           <path d="M19 5 8.5 15.5" strokeLinecap="round" />
         </svg>
-      )
+      );
     default:
-      return null
+      return null;
   }
 }
 
-function App() {
-  const [language, setLanguage] = useState('en')
-
-  const text = copy[language]
-
-  const navTargets = ['#home', '#logistics', '#property', '#green-coco', '#company', '#contact']
+function HomePage({ language, setLanguage }) {
+  const text = copy[language];
+  const navigate = useNavigate();
+  const navTargets = ['/#home', '/logistics', '/property', '/green-coco', '/#company', '/#contact'];
 
   return (
-    <div className="page">
+    <>
       <header className="topbar shell">
-        <a className="brand" href="#home" aria-label="Sampaa Logistics home">
+        <Link className="brand" to="/" aria-label="Sampaa Logistics home">
           <span className="brand__mark" aria-hidden="true">
             <img src={sampaaLogo} alt="" className="brand__logo" />
           </span>
-        </a>
+        </Link>
 
         <nav className="nav" aria-label="Primary">
-          {text.nav.map((item, index) => (
-            <a key={item} href={navTargets[index]}>
-              {item}
-            </a>
-          ))}
+          {text.nav.map((item, index) => {
+            const target = navTargets[index];
+            return target.startsWith('#') ? (
+              <a key={item} href={target}>{item}</a>
+            ) : (
+              <Link key={item} to={target}>{item}</Link>
+            );
+          })}
         </nav>
 
         <div className="header-actions">
@@ -214,52 +222,40 @@ function App() {
       </header>
 
       <main>
-      <section className="hero shell" id="home">
-  {/* Video Background */}
-  <div className="hero__video-wrapper">
-    <video 
-      className="hero__video" 
-      autoPlay 
-      muted 
-      loop 
-      playsInline
-      poster="/src/assets/videos/hero-poster.jpg"
-    >
-      <source src="/src/assets/videos/herov.mp4" type="video/mp4" />
-      {/* Add fallback image if video doesn't load */}
-    </video>
-    <div className="hero__overlay"></div>
-  </div>
-
-  {/* Content overlay on top of video */}
-  <div className="hero__content">
-    <div className="hero__copy">
-      <p className="hero__eyebrow">{text.heroEyebrow}</p>
-      <h1>{text.heroTitle}</h1>
-      <p className="hero__text">{text.heroText}</p>
-
-      <div className="hero__actions">
-        <a className="button button--primary" href="#services">
-          {text.heroPrimary}
-        </a>
-        <a className="button button--ghost" href="#contact">
-          {text.heroSecondary}
-        </a>
-      </div>
-    </div>
-
-    
-  </div>
-</section>
-
-        <section className="section shell" id="services">
-          <div className="route-track" aria-hidden="true">
-            <span className="route-track__line" />
-            <span className="route-track__dot" />
-            <span className="route-track__dot" />
-            <span className="route-track__dot" />
+        <section className="hero shell" id="home">
+          <div className="hero__video-wrapper">
+            <video 
+              className="hero__video" 
+              autoPlay 
+              muted 
+              loop 
+              playsInline
+              poster="/src/assets/videos/hero-poster.jpg"
+            >
+              <source src="/src/assets/videos/herov.mp4" type="video/mp4" />
+            </video>
+            <div className="hero__overlay"></div>
           </div>
 
+          <div className="hero__content">
+            <div className="hero__copy">
+              <p className="hero__eyebrow">{text.heroEyebrow}</p>
+              <h1>{text.heroTitle}</h1>
+              <p className="hero__text">{text.heroText}</p>
+
+              <div className="hero__actions">
+                <a className="button button--primary" href="#services">
+                  {text.heroPrimary}
+                </a>
+                <a className="button button--ghost" href="#contact">
+                  {text.heroSecondary}
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section shell" id="services">
           <div className="service-grid">
             {text.cards.map((card, index) => (
               <article
@@ -268,19 +264,19 @@ function App() {
                 id={card.id}
               >
                 <div className="service-card__image-wrapper">
-          <img 
-            src={card.image} 
-            alt={card.imageAlt} 
-            className="service-card__image"
-            loading="lazy"
-          />
-          <div className={`service-card__image-overlay service-card__image-overlay--${card.theme}`}>
-            <span className={`service-card__badge service-card__badge--${card.theme}`}>
-              <ServiceIcon name={card.icon} />
-            </span>
-            <span className="service-card__index">{String(index + 1).padStart(2, '0')}</span>
-          </div>
-        </div>
+                  <img 
+                    src={card.image} 
+                    alt={card.imageAlt} 
+                    className="service-card__image"
+                    loading="lazy"
+                  />
+                  <div className={`service-card__image-overlay service-card__image-overlay--${card.theme}`}>
+                    <span className={`service-card__badge service-card__badge--${card.theme}`}>
+                      <ServiceIcon name={card.icon} />
+                    </span>
+                    <span className="service-card__index">{String(index + 1).padStart(2, '0')}</span>
+                  </div>
+                </div>
 
                 <div className="service-card__body">
                   <h2>{card.title}</h2>
@@ -292,10 +288,17 @@ function App() {
                     ))}
                   </ul>
 
-                  <a href="#contact" className="service-card__cta">
-                    {text.cardCta}
-                    <span aria-hidden="true">&rarr;</span>
-                  </a>
+                  {card.link ? (
+                    <Link to={card.link} className="service-card__cta">
+                      {text.cardCta}
+                      <span aria-hidden="true">&rarr;</span>
+                    </Link>
+                  ) : (
+                    <a href="#contact" className="service-card__cta">
+                      {text.cardCta}
+                      <span aria-hidden="true">&rarr;</span>
+                    </a>
+                  )}
                 </div>
               </article>
             ))}
@@ -357,8 +360,23 @@ function App() {
           </div>
         </section>
       </main>
-    </div>
-  )
+    </>
+  );
 }
 
-export default App
+function App() {
+  const [language, setLanguage] = useState('en');
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage language={language} setLanguage={setLanguage} />} />
+        <Route path="/logistics" element={<LogisticsPage language={language} setLanguage={setLanguage} />} />
+        <Route path="/property" element={<PropertyPage language={language} setLanguage={setLanguage} />} />
+        {/* Add more routes as needed */}
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
