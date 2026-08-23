@@ -193,7 +193,8 @@ const content = {
 
 function LogisticsPage({ language, setLanguage }) {
   const text = content[language];
-  const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '/contact'];
+ // Inside LogisticsPage component, update the navTargets:
+const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '/contact'];
 
   return (
     <div className="logistics-page">

@@ -350,7 +350,7 @@ const content = {
 
 function PropertyPage({ language, setLanguage }) {
   const text = content[language];
-  const navTargets = ['/', '/logistics', '/property', '/green-coco', '/#company', '/#contact'];
+const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '/contact'];
 
   return (
     <div className="property-page">

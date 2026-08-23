@@ -1,8 +1,10 @@
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './App.css';
 import LogisticsPage from './pages/LogisticsPage';
 import PropertyPage from './pages/PropertyPage';
+import CompanyPage from './pages/CompanyPage';
+import ContactPage from './pages/ContactPage';
 import sampaaLogo from './assets/images/slogo.jpg';
 import logisticsImage from './assets/images/transport.jpg';
 import propertyImage from './assets/images/property.jpg';
@@ -176,7 +178,9 @@ function ServiceIcon({ name }) {
 function HomePage({ language, setLanguage }) {
   const text = copy[language];
   const navigate = useNavigate();
-  const navTargets = ['/#home', '/logistics', '/property', '/green-coco', '/#company', '/#contact'];
+
+  // Define navigation targets - all routes now
+  const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '/contact'];
 
   return (
     <>
@@ -190,11 +194,7 @@ function HomePage({ language, setLanguage }) {
         <nav className="nav" aria-label="Primary">
           {text.nav.map((item, index) => {
             const target = navTargets[index];
-            return target.startsWith('#') ? (
-              <a key={item} href={target}>{item}</a>
-            ) : (
-              <Link key={item} to={target}>{item}</Link>
-            );
+            return <Link key={item} to={target}>{item}</Link>;
           })}
         </nav>
 
@@ -215,9 +215,9 @@ function HomePage({ language, setLanguage }) {
               FI
             </button>
           </div>
-          <a href="#contact" className="quote-btn">
+          <Link to="/contact" className="quote-btn">
             {text.quoteButton}
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -247,9 +247,9 @@ function HomePage({ language, setLanguage }) {
                 <a className="button button--primary" href="#services">
                   {text.heroPrimary}
                 </a>
-                <a className="button button--ghost" href="#contact">
+                <Link to="/contact" className="button button--ghost">
                   {text.heroSecondary}
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -294,10 +294,10 @@ function HomePage({ language, setLanguage }) {
                       <span aria-hidden="true">&rarr;</span>
                     </Link>
                   ) : (
-                    <a href="#contact" className="service-card__cta">
+                    <Link to="/contact" className="service-card__cta">
                       {text.cardCta}
                       <span aria-hidden="true">&rarr;</span>
-                    </a>
+                    </Link>
                   )}
                 </div>
               </article>
@@ -373,7 +373,8 @@ function App() {
         <Route path="/" element={<HomePage language={language} setLanguage={setLanguage} />} />
         <Route path="/logistics" element={<LogisticsPage language={language} setLanguage={setLanguage} />} />
         <Route path="/property" element={<PropertyPage language={language} setLanguage={setLanguage} />} />
-        {/* Add more routes as needed */}
+        <Route path="/company" element={<CompanyPage language={language} setLanguage={setLanguage} />} />
+        <Route path="/contact" element={<ContactPage language={language} setLanguage={setLanguage} />} />
       </Routes>
     </Router>
   );
