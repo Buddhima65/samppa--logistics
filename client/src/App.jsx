@@ -5,10 +5,12 @@ import LogisticsPage from './pages/LogisticsPage';
 import PropertyPage from './pages/PropertyPage';
 import CompanyPage from './pages/CompanyPage';
 import ContactPage from './pages/ContactPage';
+import GreenCocoPage from './pages/GreenCocoPage';
 import sampaaLogo from './assets/images/slogo.jpg';
 import logisticsImage from './assets/images/transport.jpg';
 import propertyImage from './assets/images/property.jpg';
 import greenCocoImage from './assets/images/green.jpg';
+
 
 const copy = {
   en: {
@@ -313,6 +315,7 @@ function HomePage({ language, setLanguage }) {
             </article>
           ))}
         </section>
+        
 
         {/* FOOTER - DARK BLUE BACKGROUND */}
         <section className="home-contact-footer" id="contact">
@@ -394,6 +397,7 @@ function App() {
         <Route path="/property" element={<PropertyPage language={language} setLanguage={setLanguage} />} />
         <Route path="/company" element={<CompanyPage language={language} setLanguage={setLanguage} />} />
         <Route path="/contact" element={<ContactPage language={language} setLanguage={setLanguage} />} />
+        <Route path="/green-coco" element={<GreenCocoPage language={language} setLanguage={setLanguage} />} />
       </Routes>
     </Router>
   );
