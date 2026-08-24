@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './ContactPage.css';
 import sampaaLogo from '../assets/images/slogo.jpg';
-import ownerImage from '../assets/images/owner.jpg'; // Add owner image
+import ownerImage from '../assets/images/owner.jpg';
 
 const content = {
   en: {
@@ -10,7 +10,7 @@ const content = {
     quoteButton: 'Request a Quote',
     pageTitle: 'Contact Us',
     heroTitle: 'Get In Touch',
-    heroSubtitle: 'We\'re here to help with all your logistics needs',
+    heroSubtitle: "We're here to help with all your logistics needs",
     
     contactInfo: {
       title: 'Contact Information',
@@ -21,10 +21,11 @@ const content = {
     },
     
     form: {
-      title: 'Send Us a Message',
+      title: 'REQUEST A QUOTE',
       name: 'Name *',
-      email: 'E-mail address *',
+      company: 'Company',
       phone: 'Telephone number',
+      email: 'E-mail address *',
       message: 'Message',
       submit: 'Send Message',
       success: 'Thank you! We\'ll get back to you soon.'
@@ -72,10 +73,11 @@ const content = {
     },
     
     form: {
-      title: 'Lähetä Viesti',
+      title: 'PYYDÄ TARJOUS',
       name: 'Nimi *',
-      email: 'Sähköpostiosoite *',
+      company: 'Yritys',
       phone: 'Puhelinnumero',
+      email: 'Sähköpostiosoite *',
       message: 'Viesti',
       submit: 'Lähetä Viesti',
       success: 'Kiitos! Otamme sinuun pian yhteyttä.'
@@ -131,11 +133,7 @@ function ContactPage({ language, setLanguage }) {
         <nav className="nav" aria-label="Primary">
           {text.nav.map((item, index) => {
             const target = navTargets[index];
-            return target.startsWith('#') ? (
-              <a key={item} href={target}>{item}</a>
-            ) : (
-              <Link key={item} to={target}>{item}</Link>
-            );
+            return <Link key={item} to={target}>{item}</Link>;
           })}
         </nav>
         <div className="header-actions">
@@ -143,7 +141,7 @@ function ContactPage({ language, setLanguage }) {
             <button type="button" className={language === 'en' ? 'is-active' : ''} onClick={() => setLanguage('en')}>EN</button>
             <button type="button" className={language === 'fi' ? 'is-active' : ''} onClick={() => setLanguage('fi')}>FI</button>
           </div>
-          <a href="#contact" className="quote-btn">{text.quoteButton}</a>
+          <Link to="/contact" className="quote-btn">{text.quoteButton}</Link>
         </div>
       </header>
 
@@ -178,146 +176,144 @@ function ContactPage({ language, setLanguage }) {
           </div>
         </section>
 
-        {/* Main Contact Section */}
+        {/* Main Contact Section - Owner on Left, Form on Right */}
         <section className="contact-main shell">
-          <div className="contact-grid">
-            {/* Contact Info Card */}
-            <div className="contact-info-card">
-              <div className="card-header">
-                <span className="card-icon">📍</span>
-                <h2>{text.contactInfo.title}</h2>
-              </div>
-              
-              <div className="info-items">
-                <div className="info-item">
-                  <div className="info-icon">📞</div>
-                  <div className="info-content">
-                    <span className="info-label">{language === 'en' ? 'Phone' : 'Puhelin'}</span>
-                    <a href={`tel:${text.contactInfo.phone}`} className="info-value">{text.contactInfo.phone}</a>
-                  </div>
+          <div className="contact-two-column">
+            {/* LEFT COLUMN - Owner Image & Contact Info */}
+            <div className="contact-left-column">
+              {/* Owner Card with Large Image */}
+              <div className="owner-card-left">
+                <div className="owner-image-left-container">
+                  <img src={ownerImage} alt={text.owner.name} className="owner-image-left" />
+                  <div className="owner-image-glow-left"></div>
                 </div>
-                
-                <div className="info-item">
-                  <div className="info-icon">✉</div>
-                  <div className="info-content">
-                    <span className="info-label">{language === 'en' ? 'Email' : 'Sähköposti'}</span>
-                    <a href={`mailto:${text.contactInfo.email}`} className="info-value">{text.contactInfo.email}</a>
-                  </div>
-                </div>
-                
-                <div className="info-item">
-                  <div className="info-icon">🏢</div>
-                  <div className="info-content">
-                    <span className="info-label">{language === 'en' ? 'Address' : 'Osoite'}</span>
-                    <span className="info-value">{text.contactInfo.address}</span>
-                  </div>
-                </div>
-                
-                <div className="info-item">
-                  <div className="info-icon">🕐</div>
-                  <div className="info-content">
-                    <span className="info-label">{language === 'en' ? 'Opening Hours' : 'Aukioloajat'}</span>
-                    <span className="info-value">{text.contactInfo.openingHours}</span>
+                <div className="owner-info-left">
+                  <div className="owner-badge-left">✦ {language === 'en' ? 'Leadership' : 'Johto'}</div>
+                  <h2 className="owner-name-left">{text.owner.name}</h2>
+                  <h3 className="owner-title-left">{text.owner.title}</h3>
+                  <p className="owner-description-left">{text.owner.description}</p>
+                  <div className="owner-contact-left">
+                    <a href={`mailto:${text.contactInfo.email}`} className="owner-email-left">
+                      <span>✉</span>
+                      {text.contactInfo.email}
+                    </a>
+                    <a href={`tel:${text.contactInfo.phone}`} className="owner-phone-left">
+                      <span>📞</span>
+                      {text.contactInfo.phone}
+                    </a>
                   </div>
                 </div>
               </div>
 
-              {/* Close In Badge */}
-              <div className="close-in-badge">
-                <span className="close-in-icon">📍</span>
-                <span className="close-in-text">{text.closeIn}</span>
-              </div>
-
-              {/* Menu Links */}
-              <div className="contact-menu-links">
-                <div className="menu-section">
-                  <span className="menu-label">{text.menu}</span>
-                  <div className="menu-items">
-                    <Link to="/company">Company</Link>
-                    <Link to="/logistics">Services</Link>
-                    <a href="#contact">Contact us</a>
+              {/* Contact Info - Horizontal Below Owner */}
+              <div className="contact-info-left">
+                <div className="contact-info-grid-left">
+                  <div className="contact-info-item-left">
+                    <div className="contact-info-icon-left">📞</div>
+                    <div className="contact-info-content-left">
+                      <span className="contact-info-label-left">{language === 'en' ? 'Phone' : 'Puhelin'}</span>
+                      <a href={`tel:${text.contactInfo.phone}`} className="contact-info-value-left">{text.contactInfo.phone}</a>
+                    </div>
                   </div>
-                </div>
-                <div className="menu-section">
-                  <span className="menu-label">{text.social.title}</span>
-                  <div className="menu-items">
-                    <a href="#" target="_blank" rel="noopener noreferrer">{text.social.facebook}</a>
-                    <a href="#" target="_blank" rel="noopener noreferrer">{text.social.instagram}</a>
-                    <a href="#" target="_blank" rel="noopener noreferrer">{text.social.linkedin}</a>
+                  
+                  <div className="contact-info-item-left">
+                    <div className="contact-info-icon-left">✉</div>
+                    <div className="contact-info-content-left">
+                      <span className="contact-info-label-left">{language === 'en' ? 'Email' : 'Sähköposti'}</span>
+                      <a href={`mailto:${text.contactInfo.email}`} className="contact-info-value-left">{text.contactInfo.email}</a>
+                    </div>
+                  </div>
+                  
+                  <div className="contact-info-item-left">
+                    <div className="contact-info-icon-left">🏢</div>
+                    <div className="contact-info-content-left">
+                      <span className="contact-info-label-left">{language === 'en' ? 'Address' : 'Osoite'}</span>
+                      <span className="contact-info-value-left">{text.contactInfo.address}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="contact-info-item-left">
+                    <div className="contact-info-icon-left">🕐</div>
+                    <div className="contact-info-content-left">
+                      <span className="contact-info-label-left">{language === 'en' ? 'Opening Hours' : 'Aukioloajat'}</span>
+                      <span className="contact-info-value-left">{text.contactInfo.openingHours}</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="contact-form-card">
-              <div className="form-header">
-                <span className="form-icon">✉</span>
-                <h2>{text.form.title}</h2>
-                <div className="form-divider"></div>
-              </div>
-              
-              {formSubmitted ? (
-                <div className="success-message">
-                  <span className="success-icon">✓</span>
-                  <p>{text.form.success}</p>
+            {/* RIGHT COLUMN - Contact Form */}
+            <div className="contact-right-column">
+              <div className="contact-form-card">
+                <div className="form-header">
+                  <h2>{text.form.title}</h2>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="contact-form">
-                  <div className="form-group">
-                    <label htmlFor="name">{text.form.name}</label>
-                    <input type="text" id="name" required placeholder={language === 'en' ? 'Your full name' : 'Koko nimesi'} />
+                
+                {formSubmitted ? (
+                  <div className="success-message">
+                    <span className="success-icon">✓</span>
+                    <p>{text.form.success}</p>
                   </div>
-                  
-                  <div className="form-group">
-                    <label htmlFor="email">{text.form.email}</label>
-                    <input type="email" id="email" required placeholder="your@email.com" />
-                  </div>
-                  
-                  <div className="form-group">
-                    <label htmlFor="phone">{text.form.phone}</label>
-                    <input type="tel" id="phone" placeholder={language === 'en' ? '+358 40 123 4567' : '+358 40 123 4567'} />
-                  </div>
-                  
-                  <div className="form-group">
-                    <label htmlFor="message">{text.form.message}</label>
-                    <textarea id="message" rows="5" placeholder={language === 'en' ? 'How can we help you?' : 'Miten voimme auttaa sinua?'}></textarea>
-                  </div>
-                  
-                  <button type="submit" className="submit-btn">
-                    <span className="btn-icon">✉</span>
-                    {text.form.submit}
-                    <span className="btn-arrow">→</span>
-                  </button>
-                </form>
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* Owner Section */}
-        <section className="contact-owner shell">
-          <div className="owner-card">
-            <div className="owner-image-container">
-              <div className="owner-image-wrapper">
-                <img src={ownerImage} alt={text.owner.name} className="owner-image" />
-                <div className="owner-image-glow"></div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="contact-form">
+                    <div className="form-group">
+                      <label htmlFor="name">{text.form.name}</label>
+                      <input type="text" id="name" required />
+                    </div>
+                    
+                    <div className="form-group">
+                      <label htmlFor="company">{text.form.company}</label>
+                      <input type="text" id="company" />
+                    </div>
+                    
+                    <div className="form-group">
+                      <label htmlFor="phone">{text.form.phone}</label>
+                      <input type="tel" id="phone" />
+                    </div>
+                    
+                    <div className="form-group">
+                      <label htmlFor="email">{text.form.email}</label>
+                      <input type="email" id="email" required />
+                    </div>
+                    
+                    <div className="form-group">
+                      <label htmlFor="message">{text.form.message}</label>
+                      <textarea id="message" rows="5"></textarea>
+                    </div>
+                    
+                    <button type="submit" className="submit-btn">
+                      {text.form.submit}
+                    </button>
+                  </form>
+                )}
               </div>
-            </div>
-            <div className="owner-info">
-              <div className="owner-badge">✦ {language === 'en' ? 'Leadership' : 'Johto'}</div>
-              <h2>{text.owner.name}</h2>
-              <h3>{text.owner.title}</h3>
-              <p>{text.owner.description}</p>
-              <div className="owner-contact">
-                <a href={`mailto:${text.contactInfo.email}`} className="owner-email">
-                  <span className="owner-email-icon">✉</span>
-                  {text.contactInfo.email}
-                </a>
-                <a href={`tel:${text.contactInfo.phone}`} className="owner-phone">
-                  <span className="owner-phone-icon">📞</span>
-                  {text.contactInfo.phone}
-                </a>
+
+              {/* Close In Badge & Menu Links - Below Form */}
+              <div className="contact-sidebar-right">
+                <div className="close-in-badge-right">
+                  <span className="close-in-icon-right">📍</span>
+                  <span className="close-in-text-right">{text.closeIn}</span>
+                </div>
+
+                <div className="contact-menu-links-right">
+                  <div className="menu-section-right">
+                    <span className="menu-label-right">{text.menu}</span>
+                    <div className="menu-items-right">
+                      <Link to="/company">Company</Link>
+                      <Link to="/logistics">Services</Link>
+                      <Link to="/contact">Contact us</Link>
+                    </div>
+                  </div>
+                  <div className="menu-section-right">
+                    <span className="menu-label-right">{text.social.title}</span>
+                    <div className="menu-items-right">
+                      <a href="#" target="_blank" rel="noopener noreferrer">{text.social.facebook}</a>
+                      <a href="#" target="_blank" rel="noopener noreferrer">{text.social.instagram}</a>
+                      <a href="#" target="_blank" rel="noopener noreferrer">{text.social.linkedin}</a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -336,7 +332,7 @@ function ContactPage({ language, setLanguage }) {
             <Link to="/logistics">{text.nav[1]}</Link>
             <Link to="/property">{text.nav[2]}</Link>
             <Link to="/company">{text.nav[4]}</Link>
-            <a href="#contact">{text.nav[5]}</a>
+            <Link to="/contact">{text.nav[5]}</Link>
           </div>
         </div>
         <div className="shell contact-footer__bottom">
