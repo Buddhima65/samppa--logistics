@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './GreenCocoPage.css';
 import sampaaLogo from '../assets/images/slogo.jpg';
-import greenCocoHero from '../assets/images/green.jpg';
+import greenCocoHero from '../assets/images/coco.jpg';
 import cocoPeatImage from '../assets/images/coco-peat.jpg';
 //import cocoHuskImage from '../assets/images/coco-husk.jpg';
 //import growBagsImage from '../assets/images/grow-bags.jpg';
@@ -213,7 +213,6 @@ function GreenCocoPage({ language, setLanguage }) {
         <div className="green-coco-page-title shell">
           <div className="title-container">
             <h1 className="page-title">{text.pageTitle}</h1>
-            <div className="title-line"></div>
           </div>
         </div>
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './PropertyPage.css';
 import sampaaLogo from '../assets/images/slogo.jpg';
-import propertyHero from '../assets/images/property.jpg';
+import propertyHero from '../assets/images/snow.jpg';
 
 const content = {
   en: {

@@ -9,11 +9,13 @@
   padding: 24px 0 8px;
 }
 
-.page-title {
+.company-page-title .page-title {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  background: none !important;
   font-family: var(--font-display);
   font-size: 2.2rem;
   text-transform: uppercase;
-  color: var(--navy-800);
   margin: 0;
   letter-spacing: 0.02em;
 }
@@ -459,87 +461,6 @@
   font-size: 0.9rem;
 }
 
-/* ===== FOOTER ===== */
-.company-footer {
-  margin-top: 56px;
-  background: linear-gradient(180deg, #0a1f3d 0%, #071a32 100%);
-  color: #ffffff;
-  border-top: 3px solid #f5b43a;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.company-footer__top {
-  padding: 32px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.footer-brand h3 {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  color: #ffffff;
-  margin: 0 0 4px;
-}
-
-.footer-brand p {
-  font-size: 0.85rem;
-  color: #b3c5e3;
-  margin: 0;
-}
-
-.footer-nav {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.footer-nav a {
-  color: #e7eefb;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.footer-nav a:hover {
-  color: #ffffff;
-}
-
-.company-footer__bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 14px 0 18px;
-}
-
-.company-footer__bottom p {
-  margin: 0;
-  color: #b3c5e3;
-  font-size: 0.72rem;
-}
-
-.footer-links {
-  display: flex;
-  gap: 16px;
-}
-
-.footer-links a {
-  color: #b3c5e3;
-  text-decoration: none;
-  font-size: 0.72rem;
-  transition: color 0.2s ease;
-}
-
-.footer-links a:hover {
-  color: #ffffff;
-  text-decoration: underline;
-}
-
 /* ===== RESPONSIVE ===== */
 
 /* Tablet */
@@ -576,14 +497,6 @@
     border-right: none;
   }
 
-  .company-footer__top {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-nav {
-    justify-content: center;
-  }
 }
 
 /* Mobile */
@@ -670,14 +583,6 @@
     font-size: 1.8rem;
   }
 
-  .company-footer__bottom {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-links {
-    justify-content: center;
-  }
 
   .company-hero__actions {
     flex-direction: column;

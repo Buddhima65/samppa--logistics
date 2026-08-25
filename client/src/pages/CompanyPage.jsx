@@ -269,7 +269,7 @@ function CompanyPage({ language, setLanguage }) {
       <main className="company-main">
         {/* Page Title */}
         <div className="company-page-title shell">
-          <h1 className="page-title">{text.pageTitle}</h1>
+          <h1 className="page-title" style={{ color: '#000000' }}>{text.pageTitle}</h1>
         </div>
 
         {/* Hero Section with Video */}
@@ -367,7 +367,7 @@ function CompanyPage({ language, setLanguage }) {
         </section>
 
         {/* Contact CTA */}
-        <section className="company-contact-cta shell" id="contact">
+        <section className="company-contact-cta shell">
           <div className="company-cta-box">
             <h2>{text.contact.title}</h2>
             <p>{text.contact.subtitle}</p>
@@ -408,6 +408,7 @@ function CompanyPage({ language, setLanguage }) {
           <div className="home-contact-block">
             <h4>{text.contact.locationLabel}</h4>
             <strong>{text.contact.location}</strong>
+             <p>Finland</p>
             <p>Helsinki</p>
           </div>
 

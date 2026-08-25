@@ -170,7 +170,6 @@ function ContactPage({ language, setLanguage }) {
         <div className="contact-page-title shell">
           <div className="title-container">
             <h1 className="page-title">{text.pageTitle}</h1>
-            <div className="title-line"></div>
           </div>
         </div>
 

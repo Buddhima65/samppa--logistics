@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './LogisticsPage.css';
 import sampaaLogo from '../assets/images/slogo.jpg';
-import logisticsHero from '../assets/images/transport.jpg';
+import logisticsHero from '../assets/images/hero bg2.jpg';
 
 const content = {
   en: {
