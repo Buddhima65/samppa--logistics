@@ -28,7 +28,9 @@ const content = {
       email: 'E-mail address *',
       message: 'Message',
       submit: 'Send Message',
-      success: 'Thank you! We\'ll get back to you soon.'
+      sending: 'Sending...',
+      success: 'Thank you! We\'ll get back to you soon.',
+      error: 'Something went wrong. Please try again.'
     },
     
     owner: {
@@ -90,7 +92,9 @@ const content = {
       email: 'Sähköpostiosoite *',
       message: 'Viesti',
       submit: 'Lähetä Viesti',
-      success: 'Kiitos! Otamme sinuun pian yhteyttä.'
+      sending: 'Lähetetään...',
+      success: 'Kiitos! Otamme sinuun pian yhteyttä.',
+      error: 'Jotain meni pieleen. Yritä uudelleen.'
     },
     
     owner: {
@@ -133,12 +137,85 @@ const content = {
 function ContactPage({ language, setLanguage }) {
   const text = content[language];
   const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '/contact'];
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  // Form state
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    phone: '',
+    email: '',
+    message: ''
+  });
+
+  const [status, setStatus] = useState({
+    submitting: false,
+    submitted: false,
+    success: false,
+    message: ''
+  });
+
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 5000);
+    
+    setStatus({
+      submitting: true,
+      submitted: false,
+      success: false,
+      message: ''
+    });
+
+    try {
+      // REPLACE THIS URL WITH YOUR FORMSPREE FORM ENDPOINT
+      const response = await fetch('https://formspree.io/f/xoeagrjk', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          company: formData.company,
+          phone: formData.phone,
+          email: formData.email,
+          message: formData.message,
+          page: 'Contact Page',
+          language: language
+        })
+      });
+
+      if (response.ok) {
+        setStatus({
+          submitting: false,
+          submitted: true,
+          success: true,
+          message: text.form.success
+        });
+        // Reset form
+        setFormData({
+          name: '',
+          company: '',
+          phone: '',
+          email: '',
+          message: ''
+        });
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      setStatus({
+        submitting: false,
+        submitted: true,
+        success: false,
+        message: text.form.error
+      });
+    }
   };
 
   return (
@@ -269,43 +346,79 @@ function ContactPage({ language, setLanguage }) {
                   <h2>{text.form.title}</h2>
                 </div>
                 
-                {formSubmitted ? (
-                  <div className="success-message">
-                    <span className="success-icon">✓</span>
-                    <p>{text.form.success}</p>
+                {/* Show success or error message */}
+                {status.submitted && (
+                  <div className={`form-message ${status.success ? 'form-message--success' : 'form-message--error'}`}>
+                    {status.message}
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="contact-form">
-                    <div className="form-group">
-                      <label htmlFor="name">{text.form.name}</label>
-                      <input type="text" id="name" required />
-                    </div>
-                    
-                    <div className="form-group">
-                      <label htmlFor="company">{text.form.company}</label>
-                      <input type="text" id="company" />
-                    </div>
-                    
-                    <div className="form-group">
-                      <label htmlFor="phone">{text.form.phone}</label>
-                      <input type="tel" id="phone" />
-                    </div>
-                    
-                    <div className="form-group">
-                      <label htmlFor="email">{text.form.email}</label>
-                      <input type="email" id="email" required />
-                    </div>
-                    
-                    <div className="form-group">
-                      <label htmlFor="message">{text.form.message}</label>
-                      <textarea id="message" rows="5"></textarea>
-                    </div>
-                    
-                    <button type="submit" className="submit-btn">
-                      {text.form.submit}
-                    </button>
-                  </form>
                 )}
+                
+                <form onSubmit={handleSubmit} className="contact-form">
+                  <div className="form-group">
+                    <label htmlFor="name">{text.form.name}</label>
+                    <input 
+                      type="text" 
+                      id="name" 
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required 
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="company">{text.form.company}</label>
+                    <input 
+                      type="text" 
+                      id="company" 
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="phone">{text.form.phone}</label>
+                    <input 
+                      type="tel" 
+                      id="phone" 
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="email">{text.form.email}</label>
+                    <input 
+                      type="email" 
+                      id="email" 
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required 
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="message">{text.form.message}</label>
+                    <textarea 
+                      id="message" 
+                      name="message"
+                      rows="5"
+                      value={formData.message}
+                      onChange={handleChange}
+                    ></textarea>
+                  </div>
+                  
+                  <button 
+                    type="submit" 
+                    className="submit-btn"
+                    disabled={status.submitting}
+                  >
+                    {status.submitting ? text.form.sending : text.form.submit}
+                  </button>
+                </form>
               </div>
 
               {/* Close In Badge & Menu Links - Below Form */}
@@ -385,7 +498,6 @@ function ContactPage({ language, setLanguage }) {
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
                 </svg>
               </a>
-              
             </div>
           </div>
         </div>

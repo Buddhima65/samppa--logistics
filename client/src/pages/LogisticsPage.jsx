@@ -319,7 +319,7 @@ const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '
             <h2>{text.contact.title}</h2>
             <p className="contact-cta-subtitle">{text.contact.subtitle}</p>
             <p className="contact-cta-text">{text.contact.text}</p>
-            <Link to="/#contact" className="button button--primary button--large">
+            <Link to="/contact" className="button button--primary button--large">
               {language === 'en' ? 'Request a Quote' : 'Pyydä Tarjous'}
             </Link>
           </div>

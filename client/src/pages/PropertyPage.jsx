@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './PropertyPage.css';
@@ -153,6 +152,9 @@ const content = {
       servicesList: ['Cleaning', 'Window Washing', 'Property Maintenance', 'Lawn & Yard Care', 'Snow Removal & Sanding', 'Other Service'],
       additionalInfo: 'Additional Information:',
       submit: 'Send Quote Request',
+      sending: 'Sending...',
+      success: 'Thank you! We will contact you shortly.',
+      error: 'Something went wrong. Please try again.',
       phoneLabel: 'Phone',
       emailLabel: 'Email',
       locationLabel: 'Location'
@@ -333,6 +335,9 @@ const content = {
       servicesList: ['Siivous', 'Ikkunoiden pesu', 'Kiinteistöhuolto', 'Nurmikon ja piha-alueiden hoito', 'Lumityöt ja hiekoitus', 'Muu palvelu'],
       additionalInfo: 'Lisätietoja:',
       submit: 'Lähetä Tarjouspyyntö',
+      sending: 'Lähetetään...',
+      success: 'Kiitos! Otamme sinuun yhteyttä pian.',
+      error: 'Jotain meni pieleen. Yritä uudelleen.',
       phoneLabel: 'Puhelin',
       emailLabel: 'Sähköposti',
       locationLabel: 'Toimialue'
@@ -368,7 +373,106 @@ const content = {
 
 function PropertyPage({ language, setLanguage }) {
   const text = content[language];
-const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '/contact'];
+  const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '/contact'];
+
+  // Form state
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    phone: '',
+    email: '',
+    address: '',
+    services: [],
+    additionalInfo: ''
+  });
+
+  const [status, setStatus] = useState({
+    submitting: false,
+    submitted: false,
+    success: false,
+    message: ''
+  });
+
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    
+    if (type === 'checkbox') {
+      // Handle checkbox selections
+      setFormData(prev => {
+        const services = prev.services.includes(value)
+          ? prev.services.filter(item => item !== value)
+          : [...prev.services, value];
+        return { ...prev, services };
+      });
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    setStatus({
+      submitting: true,
+      submitted: false,
+      success: false,
+      message: ''
+    });
+
+    try {
+      // REPLACE THIS URL WITH YOUR FORMSPREE FORM ENDPOINT
+      const response = await fetch('https://formspree.io/f/xoeagrjk', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          company: formData.company,
+          phone: formData.phone,
+          email: formData.email,
+          address: formData.address,
+          services: formData.services.join(', '),
+          additionalInfo: formData.additionalInfo,
+          page: 'Property Services Quote Request',
+          language: language
+        })
+      });
+
+      if (response.ok) {
+        setStatus({
+          submitting: false,
+          submitted: true,
+          success: true,
+          message: text.contact.success
+        });
+        // Reset form
+        setFormData({
+          name: '',
+          company: '',
+          phone: '',
+          email: '',
+          address: '',
+          services: [],
+          additionalInfo: ''
+        });
+        // Reset checkboxes
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      setStatus({
+        submitting: false,
+        submitted: true,
+        success: false,
+        message: text.contact.error
+      });
+    }
+  };
 
   return (
     <div className="property-page">
@@ -577,30 +681,65 @@ const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '
             <p className="contact-subtitle">{text.contact.subtitle}</p>
             <p className="contact-subtext">{text.contact.subtext}</p>
             
-            <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+            {/* Show success or error message */}
+            {status.submitted && (
+              <div className={`form-message ${status.success ? 'form-message--success' : 'form-message--error'}`}>
+                {status.message}
+              </div>
+            )}
+            
+            <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label>{text.contact.name}</label>
-                <input type="text" required />
+                <input 
+                  type="text" 
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required 
+                />
               </div>
               
               <div className="form-group">
                 <label>{text.contact.company}</label>
-                <input type="text" />
+                <input 
+                  type="text" 
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                />
               </div>
               
               <div className="form-group">
                 <label>{text.contact.phone}</label>
-                <input type="tel" required />
+                <input 
+                  type="tel" 
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required 
+                />
               </div>
               
               <div className="form-group">
                 <label>{text.contact.email}</label>
-                <input type="email" required />
+                <input 
+                  type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required 
+                />
               </div>
               
               <div className="form-group">
                 <label>{text.contact.address}</label>
-                <input type="text" />
+                <input 
+                  type="text" 
+                  name="address"
+                  value={formData.address}
+                  onChange={handleChange}
+                />
               </div>
               
               <div className="form-group">
@@ -608,7 +747,13 @@ const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '
                 <div className="checkbox-group">
                   {text.contact.servicesList.map((service, index) => (
                     <label key={index} className="checkbox-label">
-                      <input type="checkbox" /> {service}
+                      <input 
+                        type="checkbox" 
+                        value={service}
+                        checked={formData.services.includes(service)}
+                        onChange={handleChange}
+                      /> 
+                      {service}
                     </label>
                   ))}
                 </div>
@@ -616,11 +761,20 @@ const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '
               
               <div className="form-group">
                 <label>{text.contact.additionalInfo}</label>
-                <textarea rows="4"></textarea>
+                <textarea 
+                  rows="4"
+                  name="additionalInfo"
+                  value={formData.additionalInfo}
+                  onChange={handleChange}
+                ></textarea>
               </div>
               
-              <button type="submit" className="button button--primary button--large submit-btn">
-                {text.contact.submit}
+              <button 
+                type="submit" 
+                className="button button--primary button--large submit-btn"
+                disabled={status.submitting}
+              >
+                {status.submitting ? text.contact.sending : text.contact.submit}
               </button>
             </form>
             
@@ -709,7 +863,6 @@ const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
                 </svg>
               </a>
-             
             </div>
           </div>
         </div>
