@@ -100,7 +100,14 @@ const content = {
     contact: {
       title: 'Ready to transport with us?',
       subtitle: 'Contact us for a free quote',
-      button: 'Get a Quote'
+      button: 'Get a Quote',
+      phoneLabel: 'Call Us',
+      phone: '040 123 4567',
+      emailLabel: 'Email',
+      email: 'info@samppalogistics.fi',
+      locationLabel: 'Location',
+      location: 'Finland',
+      socialLabel: 'Follow Us'
     },
     
     // Footer
@@ -205,7 +212,14 @@ const content = {
     contact: {
       title: 'Valmiina kuljettamaan kanssamme?',
       subtitle: 'Ota yhteyttä ilmaista tarjousta varten',
-      button: 'Pyydä Tarjous'
+      button: 'Pyydä Tarjous',
+      phoneLabel: 'Soita Meille',
+      phone: '040 123 4567',
+      emailLabel: 'Sähköposti',
+      email: 'info@samppalogistics.fi',
+      locationLabel: 'Sijainti',
+      location: 'Suomi',
+      socialLabel: 'Seuraa Meitä'
     },
     
     // Footer
@@ -408,7 +422,6 @@ function CompanyPage({ language, setLanguage }) {
           <div className="home-contact-block">
             <h4>{text.contact.locationLabel}</h4>
             <strong>{text.contact.location}</strong>
-             <p>Finland</p>
             <p>Helsinki</p>
           </div>
 
