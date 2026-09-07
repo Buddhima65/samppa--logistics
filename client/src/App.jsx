@@ -165,6 +165,10 @@ function HomePage({ language, setLanguage }) {
           <span className="brand__mark" aria-hidden="true">
             <img src={sampaaLogo} alt="" className="brand__logo" />
           </span>
+          <span className="brand__label">
+            <span className="brand__name">Sampaa</span>
+            <span className="brand__sub">Logistics</span>
+          </span>
         </Link>
 
         <nav className="nav" aria-label="Primary">
