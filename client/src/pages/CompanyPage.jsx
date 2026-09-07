@@ -104,7 +104,7 @@ const content = {
       phoneLabel: 'Call Us',
       phone: '040 123 4567',
       emailLabel: 'Email',
-      email: 'info@samppalogistics.fi',
+      email: 'samppa@samppalogistics.fi',
       locationLabel: 'Location',
       location: 'Finland',
       socialLabel: 'Follow Us'

@@ -81,7 +81,7 @@ const content = {
       subtitle: 'Need moving or transport services?',
       text: 'Contact us and request a quote – we respond quickly and serve you reliably.',
       phone: '+358 40 123 4567',
-      email: 'info@samppalogistics.fi',
+      email: 'samppa@samppalogistics.fi',
       location: 'Helsinki, Finland',
       phoneLabel: 'Call Us',
       emailLabel: 'Email',

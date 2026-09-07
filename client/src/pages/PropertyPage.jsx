@@ -180,7 +180,7 @@ const content = {
       phoneLabel: 'Call Us',
       phone: '040 123 4567',
       emailLabel: 'Email',
-      email: 'info@samppalogistics.fi',
+      email: 'samppa@samppalogistics.fi',
       locationLabel: 'Location',
       location: 'Finland',
       socialLabel: 'Follow Us'
@@ -363,7 +363,7 @@ const content = {
       phoneLabel: 'Soita Meille',
       phone: '040 123 4567',
       emailLabel: 'Sähköposti',
-      email: 'info@samppalogistics.fi',
+      email: 'samppa@samppalogistics.fi',
       locationLabel: 'Sijainti',
       location: 'Suomi',
       socialLabel: 'Seuraa Meitä'
@@ -790,7 +790,7 @@ function PropertyPage({ language, setLanguage }) {
                 <span className="contact-info-icon">✉️</span>
                 <div>
                   <strong>{text.contact.emailLabel}</strong>
-                  <p>info@samppalogistics.fi</p>
+                  <p>samppa@samppalogistics.fi</p>
                 </div>
               </div>
               <div className="contact-info-item">
