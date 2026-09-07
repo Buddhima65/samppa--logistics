@@ -173,7 +173,7 @@ const content = {
       subtitle: 'Tarvitsetko muutto- tai kuljetuspalvelua?',
       text: 'Ota yhteyttä ja pyydä tarjous – vastaamme nopeasti ja palvelemme luotettavasti.',
       phone: '+358 40 123 4567',
-      email: 'info@samppalogistics.fi',
+      email: 'samppa@samppalogistics.fi',
       location: 'Helsinki, Suomi',
       phoneLabel: 'Soita Meille',
       emailLabel: 'Sähköposti',

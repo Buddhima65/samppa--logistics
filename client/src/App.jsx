@@ -111,7 +111,7 @@ const copy = {
       phoneLabel: 'Soita Meille',
       phone: '040 123 4567',
       emailLabel: 'Sähköposti',
-      email: 'info@samppalogistics.fi',
+      email: 'samppa@samppalogistics.fi',
       locationLabel: 'Sijainti',
       location: 'Suomi',
       socialLabel: 'Seuraa Meitä',
