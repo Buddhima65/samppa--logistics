@@ -8,7 +8,7 @@ import companyPoster from '../assets/images/companyposter.jpg'; // Fallback post
 const content = {
   en: {
     // Navigation
-    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Green Coco Finland', 'Company', 'Contact'],
+    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Company', 'Contact'],
     quoteButton: 'Request a Quote',
     
     // Page content
@@ -120,7 +120,7 @@ const content = {
   
   fi: {
     // Navigation
-    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Green Coco Finland', 'Yritys', 'Yhteystiedot'],
+    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Yritys', 'Yhteystiedot'],
     quoteButton: 'Pyydä Tarjous',
     
     // Page content
@@ -233,7 +233,7 @@ const content = {
 
 function CompanyPage({ language, setLanguage }) {
   const text = content[language];
-  const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '/contact'];
+  const navTargets = ['/', '/logistics', '/property', '/company', '/contact'];
 
   return (
     <div className="company-page">

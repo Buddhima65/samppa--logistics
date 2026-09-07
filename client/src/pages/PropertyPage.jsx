@@ -7,7 +7,7 @@ import propertyHero from '../assets/images/snow.jpg';
 const content = {
   en: {
     // Navigation
-    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Green Coco Finland', 'Company', 'Contact'],
+    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Company', 'Contact'],
     quoteButton: 'Request a Quote',
     
     // Brand
@@ -189,7 +189,7 @@ const content = {
   
   fi: {
     // Navigation
-    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Green Coco Finland', 'Yritys', 'Yhteystiedot'],
+    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Yritys', 'Yhteystiedot'],
     quoteButton: 'Pyydä Tarjous',
     
     // Brand
@@ -373,7 +373,7 @@ const content = {
 
 function PropertyPage({ language, setLanguage }) {
   const text = content[language];
-  const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '/contact'];
+  const navTargets = ['/', '/logistics', '/property', '/company', '/contact'];
 
   // Form state
   const [formData, setFormData] = useState({
@@ -423,7 +423,7 @@ function PropertyPage({ language, setLanguage }) {
 
     try {
       // REPLACE THIS URL WITH YOUR FORMSPREE FORM ENDPOINT
-      const response = await fetch('https://formspree.io/f/xoeagrjk', {
+      const response = await fetch('https://formspree.io/f/mnpqgbqg', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

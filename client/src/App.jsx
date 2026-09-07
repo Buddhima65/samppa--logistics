@@ -5,17 +5,16 @@ import LogisticsPage from './pages/LogisticsPage';
 import PropertyPage from './pages/PropertyPage';
 import CompanyPage from './pages/CompanyPage';
 import ContactPage from './pages/ContactPage';
-import GreenCocoPage from './pages/GreenCocoPage';
 import sampaaLogo from './assets/images/slogo.jpg';
-import logisticsImage from './assets/images/transport.jpg';
+import logisticsImage from './assets/images/sa.jpg';
 import propertyImage from './assets/images/property.jpg';
-import greenCocoImage from './assets/images/green.jpg';
+
 
 
 const copy = {
   en: {
     languageLabel: 'Language',
-    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Green Coco Finland', 'Company', 'Contact'],
+    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Company', 'Contact'],
     quoteButton: 'Request a Quote',
     heroEyebrow: 'Helsinki-Based Route Network',
     heroTitle: 'Fair Service All The Way To Your Destination',
@@ -48,17 +47,6 @@ const copy = {
         imageAlt: 'Sampaa Logistics property services',
         link: '/property'
       },
-      {
-        id: 'green-coco',
-        title: 'Green Coco Finland',
-        text: 'Natural and sustainable products for better homes and daily life.',
-        points: ['Eco', 'Natural', 'Sustainable', 'Future Ready'],
-        theme: 'eco',
-        icon: 'leaf',
-        image: greenCocoImage,
-        imageAlt: 'Green Coco Finland sustainable products',
-        link: '/green-coco'
-      },
     ],
     trust: [
       { title: 'Reliable Service', text: 'Trusted experts for your daily needs.' },
@@ -79,7 +67,7 @@ const copy = {
   },
   fi: {
     languageLabel: 'Kieli',
-    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Green Coco Finland', 'Yritys', 'Yhteystiedot'],
+    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Yritys', 'Yhteystiedot'],
     quoteButton: 'Pyydä Tarjous',
     heroEyebrow: 'Helsinki-pohjainen palveluverkosto',
     heroTitle: 'Reilua Palvelua Perille Saakka',
@@ -111,17 +99,6 @@ const copy = {
         image: propertyImage,
         imageAlt: 'Sampaa Logistics property services',
         link: '/property'
-      },
-      {
-        id: 'green-coco',
-        title: 'Green Coco Finland',
-        text: 'Ekologisia ja kestäviä tuotteita paremman huomisen rakentamiseen.',
-        points: ['Eco', 'Natural', 'Sustainable', 'Better Tomorrow'],
-        theme: 'eco',
-        icon: 'leaf',
-        image: greenCocoImage,
-        imageAlt: 'Green Coco Finland sustainable products',
-        link: '/green-coco'
       },
     ],
     trust: [
@@ -179,7 +156,7 @@ function ServiceIcon({ name }) {
 
 function HomePage({ language, setLanguage }) {
   const text = copy[language];
-  const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '/contact'];
+  const navTargets = ['/', '/logistics', '/property', '/company', '/contact'];
 
   return (
     <>
@@ -229,9 +206,9 @@ function HomePage({ language, setLanguage }) {
               muted 
               loop 
               playsInline
-              poster="/src/assets/videos/hero-poster.jpg"
+              poster="/assets/videos/hero-poster.jpg"
             >
-              <source src="/src/assets/videos/herov.mp4" type="video/mp4" />
+              <source src="/assets/videos/herov.mp4" type="video/mp4" />
             </video>
             <div className="hero__overlay"></div>
           </div>
@@ -393,7 +370,6 @@ function App() {
         <Route path="/property" element={<PropertyPage language={language} setLanguage={setLanguage} />} />
         <Route path="/company" element={<CompanyPage language={language} setLanguage={setLanguage} />} />
         <Route path="/contact" element={<ContactPage language={language} setLanguage={setLanguage} />} />
-        <Route path="/green-coco" element={<GreenCocoPage language={language} setLanguage={setLanguage} />} />
       </Routes>
     </Router>
   );

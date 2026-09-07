@@ -8,7 +8,7 @@ import logisticsHero from '../assets/images/hero bg2.jpg';
 const content = {
   en: {
     // Navigation (same as main nav)
-    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Green Coco Finland', 'Company', 'Contact'],
+    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Company', 'Contact'],
     quoteButton: 'Request a Quote',
     
     // Page content
@@ -100,7 +100,7 @@ const content = {
   
   fi: {
     // Navigation (same as main nav)
-    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Green Coco Finland', 'Yritys', 'Yhteystiedot'],
+    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Yritys', 'Yhteystiedot'],
     quoteButton: 'Pyydä Tarjous',
     
     // Page content
@@ -194,7 +194,7 @@ const content = {
 function LogisticsPage({ language, setLanguage }) {
   const text = content[language];
  // Inside LogisticsPage component, update the navTargets:
-const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '/contact'];
+const navTargets = ['/', '/logistics', '/property', '/company', '/contact'];
 
   return (
     <div className="logistics-page">

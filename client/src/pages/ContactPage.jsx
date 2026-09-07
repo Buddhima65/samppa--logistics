@@ -6,7 +6,7 @@ import ownerImage from '../assets/images/owner.jpg';
 
 const content = {
   en: {
-    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Green Coco Finland', 'Company', 'Contact'],
+    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Company', 'Contact'],
     quoteButton: 'Request a Quote',
     pageTitle: 'Contact Us',
     heroTitle: 'Get In Touch',
@@ -70,7 +70,7 @@ const content = {
   },
   
   fi: {
-    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Green Coco Finland', 'Yritys', 'Yhteystiedot'],
+    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Yritys', 'Yhteystiedot'],
     quoteButton: 'Pyydä Tarjous',
     pageTitle: 'Ota Yhteyttä',
     heroTitle: 'Ota Yhteyttä',
@@ -136,7 +136,7 @@ const content = {
 
 function ContactPage({ language, setLanguage }) {
   const text = content[language];
-  const navTargets = ['/', '/logistics', '/property', '/green-coco', '/company', '/contact'];
+  const navTargets = ['/', '/logistics', '/property', '/company', '/contact'];
 
   // Form state
   const [formData, setFormData] = useState({
@@ -173,7 +173,7 @@ function ContactPage({ language, setLanguage }) {
 
     try {
       // REPLACE THIS URL WITH YOUR FORMSPREE FORM ENDPOINT
-      const response = await fetch('https://formspree.io/f/xoeagrjk', {
+      const response = await fetch('https://formspree.io/f/xwlkrpbb', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -181,10 +181,11 @@ function ContactPage({ language, setLanguage }) {
         },
         body: JSON.stringify({
           name: formData.name,
-          company: formData.company,
-          phone: formData.phone,
           email: formData.email,
-          message: formData.message,
+          company: formData.company || 'Not provided',
+          phone: formData.phone || 'Not provided',
+          message: formData.message || 'No message provided',
+          _subject: 'New Quote Request from Website',
           page: 'Contact Page',
           language: language
         })
