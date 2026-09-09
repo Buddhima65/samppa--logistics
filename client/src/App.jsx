@@ -208,9 +208,9 @@ function HomePage({ language, setLanguage }) {
               muted 
               loop 
               playsInline
-              poster="/src/assets/videos/hero-poster.jpg"
+              poster="/assets/videos/hero-poster.jpg"
             >
-              <source src="/src/assets/videos/herov2.mp4" type="video/mp4" />
+              <source src="/assets/videos/herov2.mp4" type="video/mp4" />
             </video>
             <div className="hero__overlay"></div>
           </div>
