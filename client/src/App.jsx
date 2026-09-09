@@ -207,9 +207,9 @@ function HomePage({ language, setLanguage }) {
               muted 
               loop 
               playsInline
-              poster="/assets/videos/hero-poster.jpg"
+              poster="/src/assets/videos/hero-poster.jpg"
             >
-              <source src="/assets/videos/herov.mp4" type="video/mp4" />
+              <source src="/src/assets/videos/herov2.mp4" type="video/mp4" />
             </video>
             <div className="hero__overlay"></div>
           </div>
@@ -305,7 +305,7 @@ function HomePage({ language, setLanguage }) {
                 </span>
                 <div className="home-brand__text">
                   <span className="home-brand__name">Sampaa</span>
-                  <span className="home-brand__sub">Logistics</span>
+                  <span className="home-brand__sub">Logistics OY</span>
                 </div>
               </div>
             </div>
