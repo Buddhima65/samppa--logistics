@@ -8,7 +8,7 @@ import logisticsHero from '../assets/images/hero bg2.jpg';
 const content = {
   en: {
     // Navigation (same as main nav)
-    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Company', 'Contact'],
+    nav: ['Home', 'Transport Service', 'Property Services', 'Company', 'Contact'],
     quoteButton: 'Request a Quote',
     
     // Page content
@@ -100,7 +100,7 @@ const content = {
   
   fi: {
     // Navigation (same as main nav)
-    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Yritys', 'Yhteystiedot'],
+    nav: ['Etusivu', 'Kuljetuspalvelut', 'Kiinteistöpalvelut', 'Yritys', 'Yhteystiedot'],
     quoteButton: 'Pyydä Tarjous',
     
     // Page content

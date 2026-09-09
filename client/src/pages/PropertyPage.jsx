@@ -7,7 +7,7 @@ import propertyHero from '../assets/images/snow.jpg';
 const content = {
   en: {
     // Navigation
-    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Company', 'Contact'],
+    nav: ['Home', 'Transport Service', 'Property Services', 'Company', 'Contact'],
     quoteButton: 'Request a Quote',
     
     // Brand
@@ -29,7 +29,7 @@ const content = {
     cleaning: {
       title: 'Cleaning Services',
       text: 'We keep business premises, facilities, and properties clean and pleasant.',
-      items: ['Corporate Cleaning', 'Facility Cleaning', 'Stairwell Cleaning', 'One-time Cleaning', 'Maintenance Cleaning', 'Basic Cleaning'],
+      items: ['Corporate Cleaning','Hotel Cleaning','House Cleaning','Facility Cleaning', 'Stairwell Cleaning', 'One-time Cleaning', 'Maintenance Cleaning', 'Basic Cleaning'],
       cta: 'Explore Cleaning Services →'
     },
     
@@ -48,7 +48,7 @@ const content = {
     },
     
     outdoorAreas: {
-      title: 'Outdoor & Yard Area Maintenance',
+      title: 'Outdoor & Yard Area Maintenance [Summer]',
       text: 'We keep yard areas clean and in good condition year-round.',
       items: ['Lawn Mowing', 'Yard Area Tidy-up', 'Leaf Removal', 'Waste Removal', 'Shrub and Planting Area Care', 'Outdoor Area Maintenance'],
       cta: 'Explore Outdoor Services →'
@@ -57,7 +57,7 @@ const content = {
     winterServices: {
       title: 'Winter Services',
       text: 'We ensure safe walkways even in winter.',
-      items: ['Snow Removal', 'Snow Clearing', 'Plowing', 'Sanding', 'Ice Prevention', 'Snow Removal Transport (on request)'],
+      items: ['Snow Removal', 'Snow Clearing', 'Sanding', 'Ice Prevention'],
       cta: 'Explore Winter Services →'
     },
     
@@ -108,7 +108,7 @@ const content = {
       title: 'For Properties',
       subtitle: 'Property maintenance from one partner',
       text: 'We take care of property cleanliness, outdoor areas, and agreed maintenance work year-round. The service package can be designed for housing companies, commercial properties, or other properties.',
-      services: ['Cleaning', 'Window Washing', 'Property Maintenance', 'Yard Work', 'Snow Removal'],
+      services: ['Cleaning','Window Washing', 'Property Maintenance', 'Yard Work', 'Snow Removal'],
       cta: 'Request a Quote'
     },
     
@@ -178,7 +178,7 @@ const content = {
     },
     footerContact: {
       phoneLabel: 'Call Us',
-      phone: '040 123 4567',
+      phone: '+358 44 3438 613',
       emailLabel: 'Email',
       email: 'samppa@samppalogistics.fi',
       locationLabel: 'Location',
@@ -189,7 +189,7 @@ const content = {
   
   fi: {
     // Navigation
-    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Yritys', 'Yhteystiedot'],
+    nav: ['Etusivu', 'Kuljetuspalvelut', 'Kiinteistöpalvelut', 'Yritys', 'Yhteystiedot'],
     quoteButton: 'Pyydä Tarjous',
     
     // Brand
@@ -211,7 +211,7 @@ const content = {
     cleaning: {
       title: 'Siivouspalvelut',
       text: 'Pidämme yritysten, toimitilojen ja kiinteistöjen tilat siisteinä ja viihtyisinä.',
-      items: ['Yrityssiivous', 'Toimitilojen siivous', 'Porrassiivous', 'Kertasiivous', 'Ylläpitosiivous', 'Perussiivous'],
+      items: ['Yrityssiivous','Hotellisiivous','Kodin siivous', 'Toimitilojen siivous', 'Porrassiivous', 'Kertasiivous', 'Ylläpitosiivous', 'Perussiivous'],
       cta: 'Tutustu siivouspalveluihin →'
     },
     
@@ -230,7 +230,7 @@ const content = {
     },
     
     outdoorAreas: {
-      title: 'Piha- ja ulkoalueiden hoito',
+      title: 'Piha- ja ulkoalueiden hoito [Kesä]',
       text: 'Pidämme piha-alueet siisteinä ja hyvässä kunnossa ympäri vuoden.',
       items: ['Nurmikon leikkaus', 'Piha-alueiden siistiminen', 'Lehtien poisto', 'Roskien poisto', 'Pensaiden ja istutusalueiden hoito', 'Ulkoalueiden ylläpito'],
       cta: 'Tutustu pihapalveluihin →'
@@ -239,7 +239,7 @@ const content = {
     winterServices: {
       title: 'Talvikauden palvelut',
       text: 'Huolehdimme kulkureittien turvallisuudesta myös talvella.',
-      items: ['Lumityöt', 'Lumenluonti', 'Auraus', 'Hiekoitus', 'Liukkaudentorjunta', 'Lumien poiskuljetus sovittaessa'],
+      items: ['Lumityöt', 'Lumenluonti', 'Hiekoitus', 'Liukkaudentorjunta'],
       cta: 'Tutustu talvipalveluihin →'
     },
     
@@ -361,7 +361,7 @@ const content = {
     },
     footerContact: {
       phoneLabel: 'Soita Meille',
-      phone: '040 123 4567',
+      phone: '+358 44 3438 613',
       emailLabel: 'Sähköposti',
       email: 'samppa@samppalogistics.fi',
       locationLabel: 'Sijainti',
@@ -783,7 +783,7 @@ function PropertyPage({ language, setLanguage }) {
                 <span className="contact-info-icon">📞</span>
                 <div>
                   <strong>{text.contact.phoneLabel}</strong>
-                  <p>040 123 4567</p>
+                  <p>+358 44 3438 613</p>
                 </div>
               </div>
               <div className="contact-info-item">

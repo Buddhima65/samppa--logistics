@@ -8,7 +8,7 @@ import companyPoster from '../assets/images/companyposter.jpg'; // Fallback post
 const content = {
   en: {
     // Navigation
-    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Company', 'Contact'],
+    nav: ['Home', 'Transport Service', 'Property Services', 'Company', 'Contact'],
     quoteButton: 'Request a Quote',
     
     // Page content
@@ -102,7 +102,7 @@ const content = {
       subtitle: 'Contact us for a free quote',
       button: 'Get a Quote',
       phoneLabel: 'Call Us',
-      phone: '040 123 4567',
+      phone: '+358 44 3438 613',
       emailLabel: 'Email',
       email: 'samppa@samppalogistics.fi',
       locationLabel: 'Location',
@@ -120,7 +120,7 @@ const content = {
   
   fi: {
     // Navigation
-    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Yritys', 'Yhteystiedot'],
+    nav: ['Etusivu', 'Kuljetuspalvelut', 'Kiinteistöpalvelut', 'Yritys', 'Yhteystiedot'],
     quoteButton: 'Pyydä Tarjous',
     
     // Page content
@@ -214,7 +214,7 @@ const content = {
       subtitle: 'Ota yhteyttä ilmaista tarjousta varten',
       button: 'Pyydä Tarjous',
       phoneLabel: 'Soita Meille',
-      phone: '040 123 4567',
+      phone: '+358 44 3438 613',
       emailLabel: 'Sähköposti',
       email: 'samppa@samppalogistics.fi',
       locationLabel: 'Sijainti',

@@ -100,8 +100,8 @@ a {
 }
 
 .brand__mark {
-  width: 54px;
-  height: 54px;
+  width: 74px;
+  height: 74px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -971,8 +971,8 @@ a {
   }
 
   .brand__mark {
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
   }
 
   .brand__name {

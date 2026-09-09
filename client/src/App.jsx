@@ -14,7 +14,7 @@ import propertyImage from './assets/images/property.jpg';
 const copy = {
   en: {
     languageLabel: 'Language',
-    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Company', 'Contact'],
+    nav: ['Home', 'Transport Service', 'Property Services', 'Company', 'Contact'],
     quoteButton: 'Request a Quote',
     heroEyebrow: 'Helsinki-Based Route Network',
     heroTitle: 'Fair Service All The Way To Your Destination',
@@ -40,7 +40,7 @@ const copy = {
         id: 'property',
         title: 'Property Services',
         text: 'Versatile property services all year round for maintenance and upkeep.',
-        points: ['Snow Work', 'Yard Care', 'Maintenance', 'Cleaning'],
+        points: ['Cleaning', 'Yard Care', 'Maintenance', 'Snow Work'],
         theme: 'green',
         icon: 'house',
         image: propertyImage,
@@ -56,7 +56,7 @@ const copy = {
     ],
     contact: {
       phoneLabel: 'Call Us',
-      phone: '040 123 4567',
+      phone: '+358 44 3438 613',
       emailLabel: 'Email',
       email: 'samppa@samppalogistics.fi',
       locationLabel: 'Location',
@@ -67,7 +67,7 @@ const copy = {
   },
   fi: {
     languageLabel: 'Kieli',
-    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Yritys', 'Yhteystiedot'],
+    nav: ['Etusivu', 'Kuljetuspalvelut', 'Kiinteistöpalvelut', 'Yritys', 'Yhteystiedot'],
     quoteButton: 'Pyydä Tarjous',
     heroEyebrow: 'Helsinki-pohjainen palveluverkosto',
     heroTitle: 'Reilua Palvelua Perille Saakka',
@@ -93,7 +93,7 @@ const copy = {
         id: 'property',
         title: 'Kiinteistöpalvelut',
         text: 'Monipuoliset kiinteistöpalvelut ympäri vuoden ulkoalueista sisätiloihin.',
-        points: ['Lumityöt', 'Pihapalvelut', 'Kiinteistöhuolto', 'Siivous'],
+        points: ['Siivous', 'Pihapalvelut', 'Kiinteistöhuolto', 'Lumityöt'],
         theme: 'green',
         icon: 'house',
         image: propertyImage,
@@ -109,7 +109,7 @@ const copy = {
     ],
     contact: {
       phoneLabel: 'Soita Meille',
-      phone: '040 123 4567',
+      phone: '+358 44 3438 613',
       emailLabel: 'Sähköposti',
       email: 'samppa@samppalogistics.fi',
       locationLabel: 'Sijainti',
@@ -165,10 +165,7 @@ function HomePage({ language, setLanguage }) {
           <span className="brand__mark" aria-hidden="true">
             <img src={sampaaLogo} alt="" className="brand__logo" />
           </span>
-          <span className="brand__label">
-            <span className="brand__name">Sampaa</span>
-            <span className="brand__sub">Logistics</span>
-          </span>
+         
         </Link>
 
         <nav className="nav" aria-label="Primary">

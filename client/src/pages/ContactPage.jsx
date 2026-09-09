@@ -6,7 +6,7 @@ import ownerImage from '../assets/images/owner.jpg';
 
 const content = {
   en: {
-    nav: ['Home', 'Sampaa Logistics', 'Property Services', 'Company', 'Contact'],
+    nav: ['Home', 'Transport Service', 'Property Services', 'Company', 'Contact'],
     quoteButton: 'Request a Quote',
     pageTitle: 'Contact Us',
     heroTitle: 'Get In Touch',
@@ -70,7 +70,7 @@ const content = {
   },
   
   fi: {
-    nav: ['Etusivu', 'Sampaa Logistics', 'Kiinteistöpalvelut', 'Yritys', 'Yhteystiedot'],
+    nav: ['Etusivu', 'Kuljetuspalvelut', 'Kiinteistöpalvelut', 'Yritys', 'Yhteystiedot'],
     quoteButton: 'Pyydä Tarjous',
     pageTitle: 'Ota Yhteyttä',
     heroTitle: 'Ota Yhteyttä',
