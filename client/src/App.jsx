@@ -5,6 +5,7 @@ import LogisticsPage from './pages/LogisticsPage';
 import PropertyPage from './pages/PropertyPage';
 import CompanyPage from './pages/CompanyPage';
 import ContactPage from './pages/ContactPage';
+import ScrollToTop from './components/ScrollToTop'; 
 import sampaaLogo from './assets/images/slogo.jpg';
 import logisticsImage from './assets/images/sa.jpg';
 import propertyImage from './assets/images/property.jpg';
@@ -365,6 +366,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />  {/* Add this component */}
       <Routes>
         <Route path="/" element={<HomePage language={language} setLanguage={setLanguage} />} />
         <Route path="/logistics" element={<LogisticsPage language={language} setLanguage={setLanguage} />} />

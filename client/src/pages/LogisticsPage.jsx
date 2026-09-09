@@ -272,7 +272,7 @@ const navTargets = ['/', '/logistics', '/property', '/company', '/contact'];
         </section>
 
         {/* Main Services */}
-        <section className="logistics-services-section shell">
+        <section className="logistics-services-section shell" id="services">
           <h2 className="section-title">{language === 'en' ? 'Our Services' : 'Palvelumme'}</h2>
           <div className="services-grid">
             {text.services.map((service, index) => (

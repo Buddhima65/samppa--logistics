@@ -642,13 +642,13 @@ a {
 
 .trust {
   margin-top: 56px;
-  padding: 8px;
-  background: var(--paper);
+  padding: 12px;
+  background: linear-gradient(135deg, var(--navy-800) 0%, var(--navy-900) 100%);
   border-radius: var(--radius-md);
-  border: 1px solid var(--line);
+  border: 1px solid var(--navy-700);
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  box-shadow: 0 6px 20px rgba(11, 37, 69, 0.04);
+  box-shadow: 0 12px 28px rgba(8, 28, 56, 0.16);
 }
 
 .trust-item {
@@ -656,8 +656,15 @@ a {
   grid-template-columns: auto 1fr;
   gap: 12px;
   align-items: center;
-  padding: 18px 16px;
+  padding: 20px 16px;
   position: relative;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.trust-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
 }
 
 .trust-item + .trust-item::before {
@@ -666,22 +673,23 @@ a {
   left: 0;
   top: 14px;
   bottom: 14px;
-  border-left: 1px dashed var(--line);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .trust-item__icon {
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  border: 2px solid var(--amber-500);
-  background: radial-gradient(circle at 30% 30%, var(--paper) 0%, var(--blue-mist) 100%);
+  border: 2px solid var(--amber-400);
+  background: radial-gradient(circle at 30% 30%, var(--amber-400) 0%, var(--amber-500) 35%, transparent 38%);
+  box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.12);
 }
 
 .trust-item h3 {
   margin: 0;
   font-family: var(--font-mono);
-  color: var(--navy-800);
-  font-size: 0.72rem;
+  color: var(--paper);
+  font-size: 0.82rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
@@ -689,7 +697,7 @@ a {
 .trust-item p {
   margin: 5px 0 0;
   font-size: 0.78rem;
-  color: var(--slate);
+  color: #c8d7ef;
   line-height: 1.4;
 }
 
