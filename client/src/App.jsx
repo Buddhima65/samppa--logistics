@@ -5,6 +5,11 @@ import LogisticsPage from './pages/LogisticsPage';
 import PropertyPage from './pages/PropertyPage';
 import CompanyPage from './pages/CompanyPage';
 import ContactPage from './pages/ContactPage';
+import CleaningPage from './pages/CleaningPage';
+import WindowWashingPage from './pages/WindowWashingPage';
+import PropertyMaintenancePage from './pages/PropertyMaintenancePage';
+import OutdoorAreasPage from './pages/OutdoorAreasPage'; 
+import WinterServicesPage from './pages/WinterServicesPage'; 
 import ScrollToTop from './components/ScrollToTop'; 
 import sampaaLogo from './assets/images/slogo.jpg';
 import logisticsImage from './assets/images/sa.jpg';
@@ -366,11 +371,18 @@ function App() {
 
   return (
     <Router>
-      <ScrollToTop />  {/* Add this component */}
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage language={language} setLanguage={setLanguage} />} />
         <Route path="/logistics" element={<LogisticsPage language={language} setLanguage={setLanguage} />} />
         <Route path="/property" element={<PropertyPage language={language} setLanguage={setLanguage} />} />
+        <Route path="/cleaning" element={<CleaningPage language={language} setLanguage={setLanguage} />} /> 
+        <Route path="/window-washing" element={<WindowWashingPage language={language} setLanguage={setLanguage} />} />
+ {/* Add this route */}
+        <Route path="/property-maintenance" element={<PropertyMaintenancePage language={language} setLanguage={setLanguage} />} />
+        <Route path="/outdoor-areas" element={<OutdoorAreasPage language={language} setLanguage={setLanguage} />} /> 
+        <Route path="/winter-services" element={<WinterServicesPage language={language} setLanguage={setLanguage} />} />
+          {/* ← ADD THIS */}
         <Route path="/company" element={<CompanyPage language={language} setLanguage={setLanguage} />} />
         <Route path="/contact" element={<ContactPage language={language} setLanguage={setLanguage} />} />
       </Routes>

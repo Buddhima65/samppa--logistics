@@ -37,7 +37,7 @@ const content = {
       title: 'Window Washing',
       text: 'Clean windows complete the appearance of your property.',
       items: ['Corporate Window Washing', 'Retail Window Washing', 'Housing Company Window Washing', 'One-time Window Washing'],
-      cta: 'Request a Quote →'
+      cta: 'Explore Window Washing Services →'
     },
     
     propertyMaintenance: {
@@ -219,7 +219,7 @@ const content = {
       title: 'Ikkunoiden pesu',
       text: 'Puhtaat ikkunat viimeistelevät kiinteistön ilmeen.',
       items: ['Yritysten ikkunanpesu', 'Liiketilojen ikkunanpesu', 'Taloyhtiöiden ikkunanpesu', 'Kertaluonteiset ikkunanpesut'],
-      cta: 'Pyydä tarjous →'
+      cta: 'Tutustu ikkunanpesupalveluun →'
     },
     
     propertyMaintenance: {
@@ -550,64 +550,76 @@ function PropertyPage({ language, setLanguage }) {
           <h2 className="section-title">{text.servicesTitle}</h2>
           
           {/* Cleaning Services */}
-          <div className="service-category">
-            <h3 className="service-category-title">{text.cleaning.title}</h3>
-            <p className="service-category-text">{text.cleaning.text}</p>
-            <ul className="service-items">
-              {text.cleaning.items.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-            <a href="#contact" className="service-cta-link">{text.cleaning.cta}</a>
-          </div>
+        <div className="service-category">
+  <h3 className="service-category-title">{text.cleaning.title}</h3>
+  <p className="service-category-text">{text.cleaning.text}</p>
+  <ul className="service-items">
+    {text.cleaning.items.map((item, index) => (
+      <li key={index}>{item}</li>
+    ))}
+  </ul>
+  <Link to="/cleaning" className="service-cta-link">
+    {text.cleaning.cta}
+  </Link>
+</div>
 
           {/* Window Washing */}
           <div className="service-category">
-            <h3 className="service-category-title">{text.windowWashing.title}</h3>
-            <p className="service-category-text">{text.windowWashing.text}</p>
-            <ul className="service-items">
-              {text.windowWashing.items.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-            <a href="#contact" className="service-cta-link">{text.windowWashing.cta}</a>
-          </div>
+  <h3 className="service-category-title">{text.windowWashing.title}</h3>
+  <p className="service-category-text">{text.windowWashing.text}</p>
+  <ul className="service-items">
+    {text.windowWashing.items.map((item, index) => (
+      <li key={index}>{item}</li>
+    ))}
+  </ul>
+  <Link to="/window-washing" className="service-cta-link">
+    {text.windowWashing.cta}
+  </Link>
+</div>
 
           {/* Property Maintenance */}
-          <div className="service-category">
-            <h3 className="service-category-title">{text.propertyMaintenance.title}</h3>
-            <p className="service-category-text">{text.propertyMaintenance.text}</p>
-            <ul className="service-items">
-              {text.propertyMaintenance.items.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-            <a href="#contact" className="service-cta-link">{text.propertyMaintenance.cta}</a>
-          </div>
+          {/* Property Maintenance */}
+<div className="service-category">
+  <h3 className="service-category-title">{text.propertyMaintenance.title}</h3>
+  <p className="service-category-text">{text.propertyMaintenance.text}</p>
+  <ul className="service-items">
+    {text.propertyMaintenance.items.map((item, index) => (
+      <li key={index}>{item}</li>
+    ))}
+  </ul>
+  <Link to="/property-maintenance" className="service-cta-link">
+    {text.propertyMaintenance.cta}
+  </Link>
+</div>
 
           {/* Outdoor Areas */}
-          <div className="service-category">
-            <h3 className="service-category-title">{text.outdoorAreas.title}</h3>
-            <p className="service-category-text">{text.outdoorAreas.text}</p>
-            <ul className="service-items">
-              {text.outdoorAreas.items.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-            <a href="#contact" className="service-cta-link">{text.outdoorAreas.cta}</a>
-          </div>
+        {/* Outdoor Areas */}
+<div className="service-category">
+  <h3 className="service-category-title">{text.outdoorAreas.title}</h3>
+  <p className="service-category-text">{text.outdoorAreas.text}</p>
+  <ul className="service-items">
+    {text.outdoorAreas.items.map((item, index) => (
+      <li key={index}>{item}</li>
+    ))}
+  </ul>
+  <Link to="/outdoor-areas" className="service-cta-link">
+    {text.outdoorAreas.cta}
+  </Link>
+</div>
 
           {/* Winter Services */}
           <div className="service-category">
-            <h3 className="service-category-title">{text.winterServices.title}</h3>
-            <p className="service-category-text">{text.winterServices.text}</p>
-            <ul className="service-items">
-              {text.winterServices.items.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-            <a href="#contact" className="service-cta-link">{text.winterServices.cta}</a>
-          </div>
+  <h3 className="service-category-title">{text.winterServices.title}</h3>
+  <p className="service-category-text">{text.winterServices.text}</p>
+  <ul className="service-items">
+    {text.winterServices.items.map((item, index) => (
+      <li key={index}>{item}</li>
+    ))}
+  </ul>
+  <Link to="/winter-services" className="service-cta-link">
+    {text.winterServices.cta}
+  </Link>
+</div>
         </section>
 
         {/* Why Choose Us */}
