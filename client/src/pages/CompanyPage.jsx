@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './CompanyPage.css';
 import sampaaLogo from '../assets/images/slogo.jpg';
+import vastuLogo from '../assets/images/vastu.png';
 import companyVideo from '../assets/videos/company2.mp4'; // Your company video
 import companyPoster from '../assets/images/companyposter.jpg'; // Fallback poster image
 
@@ -146,7 +147,7 @@ const content = {
         {
           icon: '🤝',
           title: 'Asiakas Ensimmäisenä',
-          text: 'Tytyväisyytesi on tärkein prioriteettimme kaikessa tekemisessä.'
+          text: 'Tyytyväisyytenne on meille ensisijaisen tärkeää kaikessa, mitä teemme.'
         },
         {
           icon: '🚚',
@@ -401,7 +402,7 @@ function CompanyPage({ language, setLanguage }) {
                 <img src={sampaaLogo} alt="" className="home-brand__logo" />
               </span>
               <div className="home-brand__text">
-                <span className="home-brand__name">Sampaa</span>
+                <span className="home-brand__name">Samppa</span>
                 <span className="home-brand__sub">Logistics OY</span>
               </div>
             </div>
@@ -426,7 +427,7 @@ function CompanyPage({ language, setLanguage }) {
           </div>
 
           <div className="home-contact-block home-contact-social">
-            <h4>{text.contact.socialLabel}</h4>
+            <h4>{text.contact.socialLabel}<img src={vastuLogo} alt="Luotettava Kumppani" className="home-footer-vastu" /></h4>
             <div className="home-social-row">
               <a href="//www.facebook.com/profile.php?id=61569304281836" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <svg className="home-social-icon-footer" viewBox="0 0 24 24" fill="currentColor">

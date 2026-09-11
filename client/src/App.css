@@ -787,11 +787,24 @@ a {
 
 .home-contact-block h4 {
   margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-mono);
   text-transform: uppercase;
   color: #8da7cd;
   font-size: 0.68rem;
   letter-spacing: 0.08em;
+}
+
+.home-footer-vastu {
+  width: 190px;
+  height: 64px;
+  margin-left: 36px;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 3px 7px;
+  border-radius: 3px;
 }
 
 .home-contact-block strong {
@@ -814,6 +827,17 @@ a {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+.home-contact-social h4 {
+  position: relative;
+  align-items: flex-start;
+}
+
+.home-contact-social .home-footer-vastu {
+  position: absolute;
+  left: 92px;
+  top: 0;
 }
 
 .home-social-row {

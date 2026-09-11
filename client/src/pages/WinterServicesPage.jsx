@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import './WinterServicesPage.css';
 import sampaaLogo from '../assets/images/slogo.jpg';
+import vastuLogo from '../assets/images/vastu.png';
 
 const content = {
   en: {
@@ -202,7 +203,7 @@ function WinterServicesPage({ language, setLanguage }) {
                 <img src={sampaaLogo} alt="" className="home-brand__logo" />
               </span>
               <div className="home-brand__text">
-                <span className="home-brand__name">Sampaa</span>
+                <span className="home-brand__name">Samppa</span>
                 <span className="home-brand__sub">Logistics OY</span>
               </div>
             </div>
@@ -227,7 +228,7 @@ function WinterServicesPage({ language, setLanguage }) {
           </div>
 
           <div className="home-contact-block home-contact-social">
-            <h4>{language === 'en' ? 'Follow Us' : 'Seuraa Meitä'}</h4>
+            <h4>{language === 'en' ? 'Follow Us' : 'Seuraa Meitä'}<img src={vastuLogo} alt="Luotettava Kumppani" className="home-footer-vastu" /></h4>
             <div className="home-social-row">
               <a href="//www.facebook.com/profile.php?id=61569304281836" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <svg className="home-social-icon-footer" viewBox="0 0 24 24" fill="currentColor">

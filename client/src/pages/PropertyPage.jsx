@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './PropertyPage.css';
 import sampaaLogo from '../assets/images/slogo.jpg';
+import vastuLogo from '../assets/images/vastu.png';
 import propertyHero from '../assets/images/snow.jpg';
 
 const content = {
@@ -838,7 +839,7 @@ function PropertyPage({ language, setLanguage }) {
                 <img src={sampaaLogo} alt="" className="home-brand__logo" />
               </span>
               <div className="home-brand__text">
-                <span className="home-brand__name">Sampaa</span>
+                <span className="home-brand__name">Samppa</span>
                 <span className="home-brand__sub">Logistics OY</span>
               </div>
             </div>
@@ -863,7 +864,7 @@ function PropertyPage({ language, setLanguage }) {
           </div>
 
           <div className="home-contact-block home-contact-social">
-            <h4>{text.footerContact.socialLabel}</h4>
+            <h4>{text.footerContact.socialLabel}<img src={vastuLogo} alt="Luotettava Kumppani" className="home-footer-vastu" /></h4>
             <div className="home-social-row">
               <a href="//www.facebook.com/profile.php?id=61569304281836" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <svg className="home-social-icon-footer" viewBox="0 0 24 24" fill="currentColor">

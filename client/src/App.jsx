@@ -12,6 +12,7 @@ import OutdoorAreasPage from './pages/OutdoorAreasPage';
 import WinterServicesPage from './pages/WinterServicesPage'; 
 import ScrollToTop from './components/ScrollToTop'; 
 import sampaaLogo from './assets/images/slogo.jpg';
+import vastuLogo from './assets/images/vastu.png';
 import logisticsImage from './assets/images/sa.jpg';
 import propertyImage from './assets/images/property.jpg';
 
@@ -25,7 +26,7 @@ const copy = {
     heroEyebrow: 'Helsinki-Based Route Network',
     heroTitle: 'Fair Service All The Way To Your Destination',
     heroText:
-      'Sampaa Logistics offers reliable transport and property services with sustainable products for modern homes and businesses.',
+      'Samppa Logistics offers reliable transport and property services with sustainable products for modern homes and businesses.',
     heroPrimary: 'Request a Quote',
     heroSecondary: 'Contact Us',
     manifestLabel: 'On This Route',
@@ -78,7 +79,7 @@ const copy = {
     heroEyebrow: 'Helsinki-pohjainen palveluverkosto',
     heroTitle: 'Reilua Palvelua Perille Saakka',
     heroText:
-      'Sampaa Logistics tarjoaa luotettavaa kuljetus- ja kiinteistöpalvelua sekä vastuullisia tuotteita huomisen tarpeisiin.',
+      'Samppa Logistics tarjoaa luotettavaa kuljetus- ja kiinteistöpalvelua sekä vastuullisia tuotteita huomisen tarpeisiin.',
     heroPrimary: 'Pyydä Tarjous',
     heroSecondary: 'Ota Yhteyttä',
     manifestLabel: 'Tällä Reitillä',
@@ -305,12 +306,12 @@ function HomePage({ language, setLanguage }) {
         <section className="home-contact-footer" id="contact">
           <div className="shell home-contact-footer__top">
             <div className="home-contact-block home-contact-brand">
-              <div className="home-footer-brand" aria-label="Sampaa Logistics home">
+              <div className="home-footer-brand" aria-label="Samppa Logistics home">
                 <span className="home-brand__mark" aria-hidden="true">
                   <img src={sampaaLogo} alt="" className="home-brand__logo" />
                 </span>
                 <div className="home-brand__text">
-                  <span className="home-brand__name">Sampaa</span>
+                  <span className="home-brand__name">Samppa</span>
                   <span className="home-brand__sub">Logistics OY</span>
                 </div>
               </div>
@@ -335,7 +336,7 @@ function HomePage({ language, setLanguage }) {
             </div>
 
             <div className="home-contact-block home-contact-social">
-              <h4>{text.contact.socialLabel}</h4>
+              <h4>{text.contact.socialLabel}<img src={vastuLogo} alt="Luotettava Kumppani" className="home-footer-vastu" /></h4>
               <div className="home-social-row">
                 <a href="//www.facebook.com/profile.php?id=61569304281836" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                   <svg className="home-social-icon-footer" viewBox="0 0 24 24" fill="currentColor">
