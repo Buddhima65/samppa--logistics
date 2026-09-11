@@ -153,7 +153,7 @@ function PropertyMaintenancePage({ language, setLanguage }) {
               FI
             </button>
           </div>
-          <Link to="/contact" className="quote-btn">
+          <Link to="/property#contact" className="quote-btn">
             {text.quoteButton}
           </Link>
         </div>
@@ -197,7 +197,7 @@ function PropertyMaintenancePage({ language, setLanguage }) {
           <div className="property-maintenance-cta-box">
             <h2>{text.ctaTitle}</h2>
             <p>{text.ctaText}</p>
-            <Link to="/contact" className="button button--primary button--large">
+            <Link to="/property#contact" className="button button--primary button--large">
               {text.ctaButton}
             </Link>
           </div>

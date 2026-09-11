@@ -16,6 +16,7 @@ const content = {
     contactInfo: {
       title: 'Contact Information',
       phone: '+358 44 3438 613',
+      phoneSecondary: '+358 44 2402 773',
       email: 'samppa@samppalogistics.fi',
       address: 'Tullivuorentie 4, 00700 Helsinki',
       openingHours: 'Mon-Fri 8:00 - 17:00'
@@ -80,6 +81,7 @@ const content = {
     contactInfo: {
       title: 'Yhteystiedot',
       phone: '+358 44 3438 613',
+      phoneSecondary: '+358 44 2402 773',
       email: 'samppa@samppalogistics.fi',
       address: 'Tullivuorentie 4, 00700 Helsinki',
       openingHours: 'Ma-Pe 8:00 - 17:00'
@@ -114,6 +116,7 @@ const content = {
     contact: {
       phoneLabel: 'Soita Meille',
       phone: '+358 44 3438 613',
+      phone: '+358 44 2402 773',
       emailLabel: 'Sähköposti',
       email: 'samppa@samppalogistics.fi',
       locationLabel: 'Sijainti',
@@ -299,6 +302,10 @@ function ContactPage({ language, setLanguage }) {
                       <span>📞</span>
                       {text.contactInfo.phone}
                     </a>
+                    <a href={`tel:${text.contactInfo.phoneSecondary}`} className="owner-phone-left">
+                      <span>📞</span>
+                      {text.contactInfo.phoneSecondary}
+                    </a>
                   </div>
                 </div>
               </div>
@@ -311,6 +318,7 @@ function ContactPage({ language, setLanguage }) {
                     <div className="contact-info-content-left">
                       <span className="contact-info-label-left">{language === 'en' ? 'Phone' : 'Puhelin'}</span>
                       <a href={`tel:${text.contactInfo.phone}`} className="contact-info-value-left">{text.contactInfo.phone}</a>
+                      <a href={`tel:${text.contactInfo.phoneSecondary}`} className="contact-info-value-left">{text.contactInfo.phoneSecondary}</a>
                     </div>
                   </div>
                   

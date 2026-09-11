@@ -163,7 +163,7 @@ function OutdoorAreasPage({ language, setLanguage }) {
               FI
             </button>
           </div>
-          <Link to="/contact" className="quote-btn">
+          <Link to="/property#contact" className="quote-btn">
             {text.quoteButton}
           </Link>
         </div>
@@ -207,7 +207,7 @@ function OutdoorAreasPage({ language, setLanguage }) {
           <div className="outdoor-areas-cta-box">
             <h2>{text.ctaTitle}</h2>
             <p>{text.ctaText}</p>
-            <Link to="/contact" className="button button--primary button--large">
+            <Link to="/property#contact" className="button button--primary button--large">
               {text.ctaButton}
             </Link>
           </div>
