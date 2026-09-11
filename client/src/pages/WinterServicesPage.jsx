@@ -212,6 +212,7 @@ function WinterServicesPage({ language, setLanguage }) {
           <div className="home-contact-block">
             <h4>{language === 'en' ? 'Call Us' : 'Soita Meille'}</h4>
             <strong>+358 44 3438 613</strong>
+            <strong>+358 44 2402 773</strong>
             <p>Mon-Fri 8.00 - 17.00</p>
           </div>
 

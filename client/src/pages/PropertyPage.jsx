@@ -848,6 +848,7 @@ function PropertyPage({ language, setLanguage }) {
           <div className="home-contact-block">
             <h4>{text.footerContact.phoneLabel}</h4>
             <strong>{text.footerContact.phone}</strong>
+            <strong>+358 44 2402 773</strong>
             <p>Mon-Fri 8.00 - 17.00</p>
           </div>
 
