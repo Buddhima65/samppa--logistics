@@ -308,10 +308,6 @@ function CompanyPage({ language, setLanguage }) {
           {/* Content overlay on top of video */}
           <div className="company-hero__content">
             <div className="company-hero__text-wrapper">
-              <div className="company-hero__badge">
-                <span className="badge-icon">🚚</span>
-                <span>{language === 'en' ? 'Since 2026' : 'Perustettu 2026'}</span>
-              </div>
               <h1>{text.heroTitle}</h1>
               <p className="company-hero__subtitle">{text.heroSubtitle}</p>
               <p className="company-hero__text">{text.about.text}</p>

@@ -4,6 +4,7 @@ import './PropertyPage.css';
 import sampaaLogo from '../assets/images/slogo.jpg';
 import vastuLogo from '../assets/images/vastu.png';
 import propertyHero from '../assets/images/snow.jpg';
+import propertyServicesImage from '../assets/images/s.jpg';
 
 const content = {
   en: {
@@ -529,7 +530,7 @@ function PropertyPage({ language, setLanguage }) {
         {/* Hero Section */}
         <section className="property-hero shell">
           <div className="property-hero__image">
-            <img src={propertyHero} alt={language === 'en' ? 'Property services' : 'Kiinteistöpalvelut'} />
+            <img src={propertyHero} alt={language === 'en' ? 'Professional cleaning services in homes and offices' : 'Ammattimaiset koti- ja toimitilasiivouspalvelut'} />
           </div>
           <div className="property-hero__content">
             <h1>{text.heroTitle}</h1>
@@ -543,6 +544,22 @@ function PropertyPage({ language, setLanguage }) {
                 {text.heroSecondary}
               </a>
             </div>
+          </div>
+        </section>
+
+        {/* Cleaning Services Showcase */}
+        <section className="property-cleaning-showcase shell">
+          <div className="property-cleaning-showcase__image">
+            <img
+              src={propertyServicesImage}
+              alt={language === 'en' ? 'Cleaning professionals working in homes and offices' : 'Siivousalan ammattilaiset kodeissa ja toimitiloissa'}
+              loading="lazy"
+            />
+          </div>
+          <div className="property-cleaning-showcase__content">
+            <p className="property-cleaning-showcase__eyebrow">{language === 'en' ? 'Everyday spaces, professionally cared for' : 'Arjen tilat, ammattimaisesti hoidettuina'}</p>
+            <h2>{language === 'en' ? 'A Cleaner Standard for Every Property' : 'Puhtaampi standardi jokaiseen kiinteistöön'}</h2>
+            <p>{language === 'en' ? 'From homes to modern offices, our trained teams bring reliable equipment and careful attention to every room.' : 'Kodeista moderneihin toimistoihin, koulutetut tiimimme tuovat luotettavat välineet ja huolellisen työn jokaiseen tilaan.'}</p>
           </div>
         </section>
 
