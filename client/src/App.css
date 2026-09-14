@@ -1170,3 +1170,182 @@ a {
     height: 16px;
   }
 }
+
+/* =========================================================
+   PHONE LAYOUT SAFETY NET
+========================================================= */
+
+@media (max-width: 760px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .topbar {
+    gap: 10px;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav a {
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .home-contact-footer__top {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 12px;
+  }
+
+  .home-contact-brand {
+    grid-column: 1 / -1;
+  }
+
+  .home-footer-brand {
+    justify-content: center;
+  }
+
+  .home-contact-block strong {
+    overflow-wrap: anywhere;
+  }
+
+  .home-contact-social .home-footer-vastu {
+    left: 68px;
+    width: 108px;
+    height: 42px;
+  }
+
+  .logistics-hero,
+  .property-hero,
+  .contact-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .logistics-hero__content,
+  .property-hero__content {
+    padding: 32px 22px;
+  }
+
+  .logistics-hero__image,
+  .property-hero__image {
+    padding: 16px;
+    order: 1;
+  }
+
+  .logistics-hero__content,
+  .property-hero__content {
+    order: 2;
+  }
+
+  .logistics-services-section,
+  .cleaning-services,
+  .property-services-section,
+  .company-services-section {
+    margin-top: 36px;
+  }
+
+  .services-grid,
+  .cleaning-services-grid,
+  .company-services-grid,
+  .additional-services-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .cleaning-hero__content {
+    padding: 44px 22px;
+  }
+
+  .cleaning-service-card,
+  .service-card-item,
+  .company-service-item {
+    padding: 24px 20px;
+  }
+
+  .cleaning-closing-text {
+    padding: 30px 22px;
+  }
+
+  .cleaning-cta-box {
+    padding: 44px 22px;
+  }
+
+  .company-hero {
+    min-height: 520px;
+  }
+
+  .company-hero__content {
+    padding: 40px 22px;
+  }
+
+  .stats-grid,
+  .mission-grid,
+  .why-choose-grid,
+  .steps-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .company-service-item {
+    min-width: 0;
+  }
+
+  .contact-two-column {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .contact-hero {
+    min-height: auto;
+  }
+
+  .contact-hero__content,
+  .contact-hero__image {
+    padding: 28px 22px;
+  }
+
+  .owner-card-left,
+  .contact-form-card {
+    padding: 24px 18px;
+  }
+
+  .owner-image-left-container {
+    width: 180px;
+    height: 180px;
+  }
+
+  .contact-info-grid-left {
+    grid-template-columns: 1fr;
+  }
+
+  .property-cleaning-showcase {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 420px) {
+  .home-contact-footer__top {
+    grid-template-columns: 1fr;
+  }
+
+  .home-contact-social .home-footer-vastu {
+    left: 72px;
+    width: 120px;
+    height: 44px;
+  }
+
+  .stats-grid,
+  .mission-grid,
+  .why-choose-grid,
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .property-cleaning-showcase__content h2,
+  .section-title {
+    font-size: 1.45rem;
+  }
+}
