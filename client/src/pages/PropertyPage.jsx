@@ -559,7 +559,6 @@ function PropertyPage({ language, setLanguage }) {
           <div className="property-cleaning-showcase__content">
             <p className="property-cleaning-showcase__eyebrow">{language === 'en' ? 'Everyday spaces, professionally cared for' : 'Arjen tilat, ammattimaisesti hoidettuina'}</p>
             <h2>{language === 'en' ? 'A Cleaner Standard for Every Property' : 'Puhtaampi standardi jokaiseen kiinteistöön'}</h2>
-            <p>{language === 'en' ? 'From homes to modern offices, our trained teams bring reliable equipment and careful attention to every room.' : 'Kodeista moderneihin toimistoihin, koulutetut tiimimme tuovat luotettavat välineet ja huolellisen työn jokaiseen tilaan.'}</p>
           </div>
         </section>
 
